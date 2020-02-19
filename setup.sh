@@ -29,6 +29,8 @@ sudo pacman -S \
   zsh-theme-powerlevel9k \
   powerline-fonts \
   awesome-terminal-fonts \
+  otf-fira-code \
+  vault \
   --noconfirm
 
 # Utilities from AUR
@@ -39,6 +41,7 @@ yay -S \
   slack-desktop  \
   teams  \
   bumblebee-status  \
+  circleci-cli-bin \
   --noconfirm\
 
 # Install Terraform and take ownership of /usr/local/bin
@@ -63,6 +66,7 @@ code --install-extension esbenp.prettier-vscode
 code --install-extension azemoh.one-monokai
 code --install-extension vscode-icons-team.vscode-icons
 code --install-extension rust-lang.rust
+code --intsall-extension mauve.terraform
 fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
