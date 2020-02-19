@@ -50,6 +50,7 @@ code --install-extension rust-lang.rust
 fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+ln -s $DIR/.i3/config ~/.i3/config
 ln -s $DIR/.Xresources ~/.Xresources
 ln -s $DIR/.vimrc ~/.vimrc
 ln -s $DIR/.profile ~/.profile
@@ -57,3 +58,4 @@ ln -s $DIR/.bash_profile ~/.bash_profile
 ln -s $DIR/.bashrc ~/.bashrc
 ln -s $DIR/.zshrc ~/.zshrc
 ln -s $DIR/.gitconfig ~/.gitconfig
+ln -s $DIR/.ssh/config ~/.ssh/config
