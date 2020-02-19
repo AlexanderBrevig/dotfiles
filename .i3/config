@@ -56,19 +56,25 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F2 exec palemoon
+bindsym $mod+F1 exec code
 bindsym $mod+F3 exec pcmanfm
+bindsym $mod+F5 exec chromium --profile-directory="Default"  
+bindsym $mod+F6 exec chromium --profile-directory="Profile 1"  
+bindsym $mod+F7 exec chromium --profile-directory="Profile 2"  
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
-bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+bindsym $mod+Shift+c exec --no-startup-id pkill compton
+bindsym $mod+Ctrl+c exec --no-startup-id compton -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
+bindsym $mod+Ctrl+s exec slack
+bindsym $mod+Ctrl+t exec teams
+bindsym $mod+Ctrl+Shift+m exec spotify
 
 # focus_follows_mouse no
 
@@ -141,10 +147,10 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1
-set $ws2 2
-set $ws3 3
-set $ws4 4
+set $ws1 1:zsh
+set $ws2 2:code
+set $ws3 3:browse
+set $ws4 4:comms
 set $ws5 5
 set $ws6 6
 set $ws7 7
@@ -184,7 +190,8 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 # assign [class="Thunderbird"] $ws1
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
-# assign [class="Skype"] $ws5
+# assign [class="slack"] $ws4
+# assign [class="tems"] $ws4
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -219,7 +226,7 @@ for_window [class="Xfburn"] floating enable
 for_window [urgent=latest] focus
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+# bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -273,8 +280,7 @@ bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id manjaro-hello
+exec --no-startup-id nitrogen --restore; sleep 2; compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
@@ -315,37 +321,33 @@ set_from_resource $term_color10    color10
 set_from_resource $term_color11    color11
 set_from_resource $term_color12    color12
 set_from_resource $term_color13    color13
-set_from_resource $term_color14    color14
-set_from_resource $term_color15    color15
+#set_from_resource $term_color14    color14
+#set_from_resource $term_color15    color15
+#
+## Start i3bar to display a workspace bar (plus the system information i3status if available)
 
-# Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	i3bar_command i3bar
-	status_command i3status
-	position bottom
-
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
-
-	bindsym button4 nop
-	bindsym button5 nop
-#   font xft:URWGothic-Book 11
-	strip_workspace_numbers yes
-
-    colors {
-        background #222D31
-        statusline #F9FAF9
-        separator  #454947
-
-#                      border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-    }
+	position top
+	tray_output none
+    strip_workspace_numbers yes
+    status_command bumblebee-status -m nic disk cpu memory date time battery  -t solarized-powerline -p nic.states="^down"
+    font pango:Inconsolata 10
 }
+
+bar {
+    position bottom
+    i3bar_command i3bar
+    status_command i3status
+
+    bindsym button4 nop
+    bindsym button5 nop
+    strip_workspace_numbers yes
+
+    output primary
+    workspace_buttons no
+    font pango:Inconsolata 10
+}
+
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
