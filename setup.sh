@@ -55,6 +55,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/zsh-users/zsh-autosuggetions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggetions
 
 ## TODO: should be done after a reboot, how fix?
+snap install helm --classic
 snap install teams-for-linux
 snap install slack --classic
 snap install code --classic
