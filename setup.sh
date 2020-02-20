@@ -21,6 +21,7 @@ sudo pacman -S \
   docker \
   go \
   nodejs \
+  npm \
   rust \
   postgresql \
   zsh \
