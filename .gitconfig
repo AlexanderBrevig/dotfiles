@@ -1,4 +1,4 @@
-[includeIf "gitdir:~/entur/bb"]
+[includeIf "gitdir:~/entur/bb/"]
   path = ~/entur/bb/.gitconfig
-[includeIf "gitdir:~/github/"]
+[includeIf "gitdir:~/entur/gh/"]
   path = ~/entug/gh/.gitconfig

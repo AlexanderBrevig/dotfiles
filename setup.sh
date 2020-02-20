@@ -2,14 +2,14 @@
 
 read -p "SYstem Update? Y/n: " -n 1 -r
 echo
-if [[ ! $REPLY =~ ^[Nn]$ ]]
+if [[ $REPLY =~ ^[Yy]$ ]]
 then
     sudo pacman -Syu
 fi
 
 read -p "Install Pacman Packages? Y/n: " -n 1 -r
 echo
-if [[ ! $REPLY =~ ^[Nn]$ ]]
+if [[ $REPLY =~ ^[Yy]$ ]]
 then
 # Install tools and programming languages
 sudo pacman -S \
@@ -18,7 +18,6 @@ sudo pacman -S \
   jq \
   yay \
   chromium \
-  code \
   docker \
   go \
   nodejs \
@@ -31,7 +30,10 @@ sudo pacman -S \
   awesome-terminal-fonts \
   otf-fira-code \
   vault \
+  snapd \
   --noconfirm
+
+sudo systemctl enable --now snapd.socket
 
 # Utilities from AUR
 yay -S \
@@ -54,29 +56,39 @@ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggetions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggetions
 
-
-# Install spotify
-pamac build spotify --noconfirm
-
-
-# Setup VS Code
+## TODO: should be done after a reboot, how fix?
+snap install code --classic
+code --install-extension eg2.tslint
+code --install-extension ms-vscode.cpptools
 code --install-extension ms-vscode.go
 code --install-extension ms-python.python
 code --install-extension esbenp.prettier-vscode
 code --install-extension azemoh.one-monokai
-code --install-extension vscode-icons-team.vscode-icons
+code --install-extension robertohuertasm.vscode-icons
 code --install-extension rust-lang.rust
-code --intsall-extension mauve.terraform
+code --install-extension mauve.terraform
+
+# Install spotify
+pamac build spotify --noconfirm
 fi
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-ln -s $DIR/.compton.conf ~/.config/compton.conf
-ln -s $DIR/.i3/config ~/.i3/config
-ln -s $DIR/.Xresources ~/.Xresources
-ln -s $DIR/.vimrc ~/.vimrc
-ln -s $DIR/.profile ~/.profile
-ln -s $DIR/.bash_profile ~/.bash_profile
-ln -s $DIR/.bashrc ~/.bashrc
-ln -s $DIR/.zshrc ~/.zshrc
-ln -s $DIR/.gitconfig ~/.gitconfig
-ln -s $DIR/.ssh/config ~/.ssh/config
+symlink_config()
+{
+  DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+  FILE=$1
+  echo "removing $FILE and symlinking from $DIR"
+  rm ~/$FILE
+  ln -s $DIR/$FILE ~/$FILE
+}
+
+symlink_config .config/compton.conf
+symlink_config .i3/config
+symlink_config .Xresources
+symlink_config .vimrc
+symlink_config .profile
+symlink_config .bash_profile
+symlink_config .bashrc
+symlink_config .zshrc
+symlink_config .gitconfig
+symlink_config .ssh/config
+symlink_config .config/Code/User/settings.json
