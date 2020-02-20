@@ -40,8 +40,6 @@ yay -S \
   google-cloud-sdk  \
   kubectl  \
   kubectx  \
-  slack-desktop  \
-  teams  \
   bumblebee-status  \
   circleci-cli-bin \
   --noconfirm\
@@ -57,6 +55,8 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/zsh-users/zsh-autosuggetions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggetions
 
 ## TODO: should be done after a reboot, how fix?
+snap install teams-for-linux
+snap install slack --classic
 snap install code --classic
 code --install-extension eg2.tslint
 code --install-extension ms-vscode.cpptools
