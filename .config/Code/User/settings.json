@@ -39,5 +39,7 @@
   "files.associations": {
     "cxx": "cpp"
   },
-  "workbench.colorTheme": "Monokai"
+  "workbench.colorTheme": "Monokai",
+  "explorer.confirmDragAndDrop": false,
+  "javascript.updateImportsOnFileMove.enabled": "always"
 }
