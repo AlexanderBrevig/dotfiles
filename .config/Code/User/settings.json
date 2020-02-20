@@ -36,10 +36,12 @@
     "*.min.js": true
   },
   "tslint.enable": true,
+  "terraform.lintPath": "tflint",
   "files.associations": {
     "cxx": "cpp"
   },
   "workbench.colorTheme": "Monokai",
   "explorer.confirmDragAndDrop": false,
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "explorer.confirmDelete": false
 }

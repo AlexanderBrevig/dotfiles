@@ -43,6 +43,7 @@ yay -S \
   kubectx  \
   bumblebee-status  \
   circleci-cli-bin \
+  tflint \
   --noconfirm\
 
 # Install Terraform and take ownership of /usr/local/bin
