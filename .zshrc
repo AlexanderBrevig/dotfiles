@@ -71,6 +71,9 @@ ZSH_THEME="agnoster"
 plugins=(
     archlinux
     git
+    history
+    kubectl
+    terraform
     history-substring-search
     colored-man-pages
     zsh-autosuggestions
