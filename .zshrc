@@ -76,7 +76,7 @@ plugins=(
     terraform
     history-substring-search
     colored-man-pages
-    zsh-autosuggestions
+    #zsh-autosuggestions
     zsh-syntax-highlighting
 )
 

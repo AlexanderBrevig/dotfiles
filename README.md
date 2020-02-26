@@ -1,4 +1,9 @@
 # dotfiles
 
-Just a collection of my dotfiles.
-Probably nothing to see here...
+If you feel ballsy, feel free to run
+
+    ./setup.sh
+
+If you've made config edits, you can do:
+
+    ./symlink.sh

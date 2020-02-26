@@ -43,5 +43,6 @@
   "workbench.colorTheme": "Monokai",
   "explorer.confirmDragAndDrop": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "explorer.confirmDelete": false
+  "explorer.confirmDelete": false,
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }
