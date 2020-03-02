@@ -143,6 +143,9 @@ POWERLEVEL9K_CUSTOM_OS_ICON_FOREGROUND=white
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_os_icon ssh root_indicator dir dir_writable vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status background_jobs )
 
+export SONAR_SCANNER_HOME="/opt/sonar-scanner"
+export PATH="${PATH}:${SONAR_SCANNER_HOME}/bin"
+
 source ~/.profile
 source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

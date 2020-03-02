@@ -7,7 +7,6 @@
   "workbench.editor.highlightModifiedTabs": true,
   "explorer.sortOrder": "type",
   "files.trimFinalNewlines": true,
-  "editor.acceptSuggestionOnEnter": "off",
   "editor.insertSpaces": true,
   "diffEditor.renderSideBySide": false,
   "editor.minimap.enabled": false,
@@ -44,5 +43,6 @@
   "explorer.confirmDragAndDrop": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "explorer.confirmDelete": false,
-  "typescript.updateImportsOnFileMove.enabled": "always"
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.tabSize": 2
 }

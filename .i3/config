@@ -148,10 +148,10 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1:zsh
-set $ws2 2:code
-set $ws3 3:browse
-set $ws4 4:comms
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
 set $ws5 5
 set $ws6 6
 set $ws7 7
@@ -293,6 +293,7 @@ exec --no-startup-id start_conky_maia
 exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec --no-startup-id terminal
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -328,9 +329,9 @@ set_from_resource $term_color13    color13
 ## Start i3bar to display a workspace bar (plus the system information i3status if available)
 
 bar {
-	position top
-	tray_output none
-    strip_workspace_numbers yes
+    position top
+    tray_output none
+    strip_workspace_numbers no
     status_command bumblebee-status -m nic disk cpu memory date time battery  -t solarized-powerline -p nic.states="^down"
     font pango:Inconsolata 10
 }

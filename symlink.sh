@@ -11,6 +11,7 @@ symlink_config()
 symlink_config .config/compton.conf
 symlink_config .i3/config
 symlink_config .Xresources
+symlink_config .Xmodmap
 symlink_config .vimrc
 symlink_config .profile
 symlink_config .bash_profile
@@ -19,3 +20,4 @@ symlink_config .zshrc
 symlink_config .gitconfig
 symlink_config .ssh/config
 symlink_config .config/Code/User/settings.json
+symlink_config .config/nvim/init.vim
