@@ -21,3 +21,4 @@ symlink_config .gitconfig
 symlink_config .ssh/config
 symlink_config .config/Code/User/settings.json
 symlink_config .config/nvim/init.vim
+symlink_config .config/alacritty/alacritty.yml

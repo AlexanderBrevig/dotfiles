@@ -6,9 +6,8 @@ let mapleader = " "
 filetype plugin indent on
 syntax on
 set t_Co=256
-set shell=/usr/bin/zsh
+set shell=/usr/bin/alacritty
 set encoding=utf-8
-set guifont=Menlo:h14
 set number
 set relativenumber
 set ttyfast
@@ -21,6 +20,18 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+
+" Split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-L>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+set splitbelow
+set splitright
+
+set swapfile
+set dir=~/.nvimswap
 
 set clipboard=unnamedplus
 
@@ -35,5 +46,25 @@ Plug 'airblade/vim-gitgutter'
 "Plug 'kien/ctrlp.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'iCyMind/NeoSolarized'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
+
+set termguicolors
+colorscheme NeoSolarized
+set background=dark
+
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_theme='solarized'
+let g:airline_solarized_bd='dark'
+
+" Configure NERDTree
+nnoremap <Leader>f :NERDTreeToggle<Enter>
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
+" Auto close tab if only remaining is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
