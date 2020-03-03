@@ -8,10 +8,11 @@ symlink_config()
   ln -s $DIR/$FILE ~/$FILE
 }
 
-symlink_config .config/compton.conf
-symlink_config .i3/config
+symlink_config .xinitrc
 symlink_config .Xresources
 symlink_config .Xmodmap
+symlink_config .config/compton.conf
+symlink_config .i3/config
 symlink_config .vimrc
 symlink_config .profile
 symlink_config .bash_profile
