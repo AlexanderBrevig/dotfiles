@@ -11,6 +11,10 @@ set $mod Mod4
 default_border pixel 1
 default_floating_border normal
 
+# Handle keyboard layouts
+bindsym $mod+Ctrl+Shift+n exec --no-startup-id setxkbmap -option compose:ralt no
+bindsym $mod+Ctrl+Shift+u exec --no-startup-id setxkbmap -option compose:ralt us
+
 # Hide borders
 hide_edge_borders none
 
@@ -280,6 +284,8 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
+exec --no-startup-id setxkbmap -option compose:ralt no
+exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 2; compton -b
 exec --no-startup-id nm-applet

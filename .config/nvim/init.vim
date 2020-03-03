@@ -5,8 +5,7 @@ vnoremap <F1> <ESC>
 let mapleader = " "
 filetype plugin indent on
 syntax on
-set t_Co=256
-set shell=/usr/bin/alacritty
+set shell=alacritty
 set encoding=utf-8
 set number
 set relativenumber
