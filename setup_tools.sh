@@ -4,6 +4,7 @@ sudo pacman -S \
   curl \
   jq \
   yay \
+  ctags \
   chromium \
   docker \
   go \
@@ -12,6 +13,7 @@ sudo pacman -S \
   rust \
   postgresql \
   otf-fira-code \
+  gucharmap \
   --noconfirm \
   --needed
 

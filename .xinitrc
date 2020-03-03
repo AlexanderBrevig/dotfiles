@@ -40,6 +40,7 @@ fi
 
 # configure keyboard
 setxkbmap -model pc105 -layout no,us -variant ,alt-intl -option grp:shifts_toggle -option caps:ctrl_modifier -option compose:ralt
+xmodmap ~/.Xmodmap
 
 get_session(){
         local dbus_args=(--sh-syntax --exit-with-session)
