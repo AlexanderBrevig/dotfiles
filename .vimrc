@@ -4,6 +4,7 @@ syntax enable
 filetype plugin on
 
 " Environment
+set t_Co=256
 set shell=/usr/bin/zsh
 set encoding=utf-8
 set number
@@ -27,17 +28,6 @@ command! MakeTags !ctags -R .
 " - Use ^] to jump to tag under cursor
 " - Use g^] for ambiguous tags
 " - Use ^t to jump back up the tag stack
-
-" BROWSE using :edit
-let g:netrw_banner=0        " disable annoying banner
-let g:netrw_browse_split=4  " open in prior window
-let g:netrw_altv=1          " open splits to the right
-let g:netrw_liststyle=3     " tree view
-let g:netrw_list_hide=netrw_gitignore#Hide()
-let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
-" - :edit a folder to open a file browser
-" - <CR>/v/t to open in an h-split/v-split/tab
-" - check |netrw-browse-maps| for more mappings
 
 " Important remaps
 inoremap jk <ESC>
@@ -76,3 +66,33 @@ nnoremap <leader>vs :vsplit<CR><C-W><C-L>
 " - ^x^] for tags only
 " - ^n for anything specified by the 'complete' option
 " - Use ^n and ^p to go back and forth in the suggestion list
+"
+call plug#begin('~/.vim/plugged')
+Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/lightline.vim'
+Plug 'preservim/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
+Plug 'editorconfig/editorconfig-vim'
+call plug#end()
+
+set laststatus=2
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Setup NERDTree
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
+map <leader>b :NERDTreeToggle<CR>
+nmap <leader>f :NERDTreeFind<CR>
+
+" Setup syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
