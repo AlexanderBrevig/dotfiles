@@ -151,3 +151,11 @@ source ~/.profile
 source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+# Aliases for zsh
+alias k=kubectl
+alias kcg=kubectl config get-contexts
+alias kcc=kubectl config current-context
+alias kcv=kubectl config view
+alias v=vim
