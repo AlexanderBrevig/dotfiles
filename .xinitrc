@@ -11,7 +11,6 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 
 DEFAULT_SESSION='i3 --shmlog-size 0'
 
-# merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources
@@ -25,10 +24,6 @@ if [ -f "$userresources" ]; then
     xrdb -merge "$userresources"
 fi
 
-if [ -f "$usermodmap" ]; then
-    xmodmap "$usermodmap"
-fi
-
 # start some nice programs
 
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
@@ -38,9 +33,13 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     unset f
 fi
 
-# configure keyboard
+
+# merge in defaults and keymaps
 setxkbmap -model pc105 -layout no,us -variant ,alt-intl -option grp:ctrls_toggle -option caps:ctrl_modifier -option compose:ralt
-xmodmap ~/.Xmodmap
+
+if [ -f "$usermodmap" ]; then
+    xmodmap "$usermodmap"
+fi
 
 get_session(){
         local dbus_args=(--sh-syntax --exit-with-session)
@@ -68,4 +67,3 @@ get_session(){
 }
 
 exec $(get_session)
-
