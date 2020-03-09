@@ -155,7 +155,11 @@ if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 # Aliases for zsh
 alias k=kubectl
+alias kx=kubectx
 alias kcg=kubectl config get-contexts
 alias kcc=kubectl config current-context
 alias kcv=kubectl config view
 alias v=vim
+alias dockerstart='sudo systemctl start docker.service && sudo systemctl enable docker.service'
+alias pgstart='sudo systemctl enable --now postgresql.service'
+alias psql='sudo -i -u postgres psql'
