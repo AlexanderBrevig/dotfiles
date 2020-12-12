@@ -21,6 +21,5 @@ symlink_config .zshrc
 symlink_config .gitconfig
 symlink_config .ssh/config
 symlink_config .config/Code/User/settings.json
-symlink_config .config/nvim/init.vim
 symlink_config .config/alacritty/alacritty.yml
-ln -s $DIR/.config/nvim/init.vim ~/.vimrc
+ln -s $DIR/.vimrc ~/.config/nvim/init.vim 

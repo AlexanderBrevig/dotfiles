@@ -5,9 +5,9 @@
 # Executed by startx (run your window manager from here)
 
 userresources=$HOME/.Xresources
-usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
+usermodmap=$HOME/.Xmodmap
 
 DEFAULT_SESSION='i3 --shmlog-size 0'
 
@@ -67,3 +67,4 @@ get_session(){
 }
 
 exec $(get_session)
+xset r rate 660 25

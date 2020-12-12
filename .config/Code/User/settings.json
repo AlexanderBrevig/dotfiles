@@ -1,7 +1,7 @@
 {
-  "editor.fontFamily": "'Fira Code','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontFamily": "'FuraCode Nerd Font', 'monospace', monospace, 'Droid Sans Fallback'",
   "editor.fontLigatures": true,
-  "terminal.integrated.fontFamily": "'FantasqueSansMono Nerd Font Mono'",
+  "terminal.integrated.fontFamily": "'FuraCode Nerd Font'",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "workbench.editor.highlightModifiedTabs": true,
@@ -45,5 +45,17 @@
   "explorer.confirmDelete": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "editor.tabSize": 2,
-  "window.zoomLevel": 0
+  "window.zoomLevel": 0,
+  "editor.mouseWheelZoom": true,
+  "go.useLanguageServer": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.wordWrapColumn": 120,
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.formatOnSave": true
+  },
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "java.configuration.checkProjectSettingsExclusions": false,
 }
