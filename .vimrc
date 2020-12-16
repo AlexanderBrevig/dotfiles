@@ -44,7 +44,7 @@ set updatetime=50
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-set colorcolumn=100
+"set colorcolumn=100
 
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -91,6 +91,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/telescope.nvim'
 
 Plug 'sainnhe/gruvbox-material'
+Plug 'ap/vim-css-color'
 
 call plug#end()
 

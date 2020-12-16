@@ -1,0 +1,10 @@
+
+add_newline = false
+
+[terraform]
+format = "[☢ $workspace]($style) "
+
+[gcloud]
+disabled = true
+format = "[$symbol$account]($style) "
+style = "bold yellow"

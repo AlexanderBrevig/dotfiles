@@ -75,7 +75,7 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+Ctrl+s exec slack
 bindsym $mod+Ctrl+t exec teams-for-linux
 bindsym $mod+Ctrl+Shift+m exec spotify
-bindsym $mod+F9 exec alacritty -e vim ~/dotfiles
+bindsym $mod+F9 exec alacritty -e nvim ~/dotfiles
 
 # focus_follows_mouse no
 
@@ -287,7 +287,6 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
-exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id alacritty
@@ -313,14 +312,15 @@ set_from_resource $term_color13    color13
 #set_from_resource $term_color15    color15
 #
 ## Start i3bar to display a workspace bar (plus the system information i3status if available)
-
-bar {
-    position top
-    tray_output none
-    strip_workspace_numbers no
-    status_command bumblebee-status -m nic disk cpu memory date time battery  -t solarized-powerline -p nic.states="^down"
-    font pango:Inconsolata 10
-}
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
 
 bar {
     position bottom
@@ -332,23 +332,45 @@ bar {
     strip_workspace_numbers yes
 
     output primary
-    workspace_buttons no
     font pango:Inconsolata 10
-}
 
+    colors {
+        # bar background color
+        background $bg
+        # text color used for blocks that do not have a color specified.
+        statusline $yellow
+        # workspaces section            
+        #                    border  backgr. text
+        focused_workspace    $aqua $aqua $darkgray
+        inactive_workspace   $darkgray $darkgray $yellow
+        active_workspace     $darkgray $darkgray $yellow
+        urgent_workspace     $red $red $bg
+    }
+}
+#end of bar section
+
+#start of window title bars & borders section
+
+# green gruvbox
+# class                 border|backgr|text|indicator|child_border
+client.focused          $green $green $darkgray $purple $darkgray
+client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+client.urgent           $red $red $white $red $red
+
+# blue gruvbox
+# class                 border|backgr|text|indicator|child_border
+#client.focused          $blue $blue $darkgray $purple $darkgray
+#client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+#client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+#client.urgent           $red $red $white $red $red
+
+client.placeholder      #000000 #0c0c0c #ffffff #000000
+client.background       #2B2C2B
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
 
-# Theme colors
-# class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3
-  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-  client.placeholder      #000000 #0c0c0c #ffffff #000000
-
-  client.background       #2B2C2B
 
 #############################
 ### settings for i3-gaps: ###
