@@ -64,7 +64,6 @@ set cursorline
 set showmatch
 set showmode
 set spell spelllang=en_us
-set $LANG='en'
 set langmenu=en
 set ff=unix
 " Wild menu settings
