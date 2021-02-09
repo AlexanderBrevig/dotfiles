@@ -18,6 +18,8 @@ symlink_config .profile
 symlink_config .bash_profile
 symlink_config .bashrc
 symlink_config .zshrc
+symlink_config .config/fish/config.fish
+symlink_config .config/fish/functions
 symlink_config .gitconfig
 symlink_config .ssh/config
 symlink_config .config/Code/User/settings.json

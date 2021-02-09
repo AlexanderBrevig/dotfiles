@@ -139,3 +139,5 @@ ex ()
 }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+source /home/alexander/.config/broot/launcher/bash/br

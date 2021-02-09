@@ -57,6 +57,7 @@ exec --no-startup-id volumeicon
 # Start Applications
 bindsym $mod+Ctrl+b exec alacritty -e 'bmenu'
 bindsym $mod+F1 exec code
+bindsym $mod+F2 exec joplin-desktop
 bindsym $mod+F3 exec pcmanfm
 bindsym $mod+F5 exec chromium --profile-directory="Default"
 bindsym $mod+F6 exec chromium --profile-directory="Profile 1"
@@ -66,9 +67,7 @@ bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+Shift+c exec --no-startup-id pkill picom
 bindsym $mod+Ctrl+c exec --no-startup-id picom -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+bindsym Print exec --no-startup-id flameshot gui
 bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
@@ -289,7 +288,9 @@ exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec setxkbmap -model pc104 -layout no,us -option grp:alt_shift_toggle -option grp:ctrls_toggle -option caps:ctrl_modifier -option compose:ralt
 exec --no-startup-id alacritty
+exec_always --no-startup-id nextcloud --background
 
 # Color palette used for the terminal ( ~/.Xresources file )
 set_from_resource $term_background background
@@ -331,7 +332,7 @@ bar {
     bindsym button5 nop
     strip_workspace_numbers yes
 
-    output primary
+    #output primary
     font pango:Inconsolata 10
 
     colors {

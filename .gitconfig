@@ -1,4 +1,16 @@
 [includeIf "gitdir:~/entur/bb/"]
   path = ~/entur/bb/.gitconfig
 [includeIf "gitdir:~/entur/gh/"]
-  path = ~/entug/gh/.gitconfig
+  path = ~/entur/gh/.gitconfig
+
+[merge]
+    tool = nvim
+
+[mergetool]
+    keepBackup = false
+
+[mergetool "nvim"]
+    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[user]
+	email = alexanderbrevig@gmail.com
+	name = Alexander Brevig

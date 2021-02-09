@@ -39,3 +39,5 @@ function rgkill {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(starship init zsh)"
+
+source /home/alexander/.config/broot/launcher/bash/br

@@ -1,3 +1,38 @@
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+            \| PlugInstall --sync | source $MYVIMRC
+            \| endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'itchyny/lightline.vim'
+
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" LSP
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-buffer.vim'
+Plug 'prabirshrestha/asyncomplete-file.vim'
+
+Plug 'gruvbox-community/gruvbox'
+Plug 'sainnhe/gruvbox-material'
+Plug 'ap/vim-css-color'
+
+call plug#end()
+
+" Actual vimrc
+
 syntax on
 filetype plugin indent on
 
@@ -20,19 +55,24 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
-set termguicolors
 set scrolloff=8
 set completeopt=menuone,noinsert,noselect
 set signcolumn=yes
 set clipboard+=unnamedplus
 set cursorline
 set showmatch
-set wildmenu
-set wildmode=list:full
-set wildignorecase
-set wildignore+=*/node_modules/*,*/build/*,*/__pycache__/*,*/bin/*
 set showmode
 set spell spelllang=en_us
+set ff=unix
+" Wild menu settings
+set wildmenu
+set wildmode=longest,list
+set complete-=i
+set wildignorecase
+set wildignore+=*.git
+set wildignore+=*.png,*.jpeg,*.jpg,*.pdf,*.dds,*.blend,*.gif
+set wildignore+=*.dll,*.exe,*.dylib,*.app,*.o,*.obj,*.so,*.lib,*.lnk
+set wildignore+=*/node_modules/*,*/build/*,*/__pycache__/*,*/bin/*
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -46,60 +86,10 @@ set shortmess+=c
 
 "set colorcolumn=100
 
-" Install vim-plug if not found
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
-" Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
-
-call plug#begin('~/.vim/plugged')
-
-Plug 'itchyny/lightline.vim'
-
-" Neovim lsp Plugins
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'tjdevries/nlua.nvim'
-Plug 'tjdevries/lsp_extensions.nvim'
-
-Plug 'rust-lang/rust.vim'
-Plug 'tweekmonster/gofmt.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'vim-utils/vim-man'
-Plug 'mbbill/undotree'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'stsewd/fzf-checkout.vim'
-Plug 'vuciv/vim-bujo'
-Plug 'tpope/vim-dispatch'
-Plug 'theprimeagen/vim-be-good'
-Plug 'gruvbox-community/gruvbox'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'tpope/vim-projectionist'
-
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-
-" telescope requirements...
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-lua/telescope.nvim'
-
-Plug 'sainnhe/gruvbox-material'
-Plug 'ap/vim-css-color'
-
-call plug#end()
 
 
-colorscheme gruvbox
 
-let g:vim_be_good_log_file = 1
-let g:vim_apm_log = 1
+hi Normal guibg=NONE ctermbg=NONE
 
 if executable('rg')
     let g:rg_derive_root='true'
@@ -134,41 +124,21 @@ let g:fzf_branch_actions = {
       \ },
       \}
 
-lua require('telescope').setup({defaults = {file_sorter = require('telescope.sorters').get_fzy_sorter}})
-
-nnoremap <leader>va :lua vim.lsp.buf.definition()<CR>
-nnoremap <leader>vd :lua vim.lsp.buf.definition()<CR>
-nnoremap <leader>vi :lua vim.lsp.buf.implementation()<CR>
-nnoremap <leader>vsh :lua vim.lsp.buf.signature_help()<CR>
-nnoremap <leader>vrr :lua vim.lsp.buf.references()<CR>
-nnoremap <leader>vrn :lua vim.lsp.buf.rename()<CR>
-nnoremap <leader>vh :lua vim.lsp.buf.hover()<CR>
-nnoremap <leader>vca :lua vim.lsp.buf.code_action()<CR>
-nnoremap <leader>vsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
-
 nnoremap <leader>gc :GBranches<CR>
 nnoremap <leader>ga :Git fetch --all<CR>
 nnoremap <leader>grum :Git rebase upstream/master<CR>
 nnoremap <leader>grom :Git rebase origin/master<CR>
 nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>pw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
-nnoremap <leader>pb :lua require('telescope.builtin').buffers()<CR>
-nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
 nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
+nnoremap <C-h> <C-W>h
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
-nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
-nnoremap <Leader>pf :lua require('telescope.builtin').find_files()<CR>
-nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>rp :resize 100<CR>
-nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
@@ -181,27 +151,9 @@ nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 nnoremap <leader>Y gg"+yG
 
-" vim TODO
-nmap <Leader>tu <Plug>BujoChecknormal
-nmap <Leader>th <Plug>BujoAddnormal
-let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
-
 inoremap <C-c> <esc>
 
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-
-augroup lsp_config_context
-  autocmd!
-  autocmd FileType typescript lua require'lspconfig'.tsserver.setup{ on_attach=require'completion'.on_attach }
-  autocmd FileType cpp lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach }
-  autocmd FileType python lua require'lspconfig'.pyls.setup{ on_attach=require'completion'.on_attach }
-  autocmd FileType java lua require'lspconfig'.jdtls.setup{ on_attach=require'completion'.on_attach ,cmd={'jdtls'} }
-  autocmd FileType golang lua require'lspconfig'.gopls.setup{ on_attach=require'completion'.on_attach }
-  autocmd FileType rust lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
-  " autocmd FileType lua lua require'nvim_lsp'.sumneko_lua.setup{ on_attach=require'completion'.on_attach }
-augroup END
-
-autocmd InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsyncutocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
@@ -221,3 +173,64 @@ endfun
 
 " ES
 com! W w
+
+" Find and search
+nnoremap <leader>re :Rg .<CR>
+nnoremap <leader>f :Files .<CR>
+nnoremap <leader>b :Buffers<CR>
+
+" LSP
+let g:lsp_settings = {
+            \'yaml-language-server': {'disabled': v:true}
+            \}
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+    
+    imap <c-space> <Plug>(asyncomplete_force_refresh)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    
+    call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name': 'buffer',
+    \ 'allowlist': ['*'],
+    \ 'blocklist': ['go'],
+    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+    \ }))
+    
+    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+    \ 'name': 'file',
+    \ 'allowlist': ['*'],
+    \ 'priority': 10,
+    \ 'completor': function('asyncomplete#sources#file#completor')
+    \ }))
+
+    nnoremap <leader>ld :LspDocumentDiagnostic<CR>
+    nnoremap <leader>lf :LspDocumentFormat<CR>
+    nnoremap <leader>ca :LspCodeAction<CR>
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+set termguicolors
+colorscheme gruvbox
+let g:lightline = {'colorscheme':'gruvbox'}
