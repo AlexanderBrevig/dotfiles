@@ -14,6 +14,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -33,7 +34,7 @@ call plug#end()
 
 " Actual vimrc
 
-syntax on
+syntax enable
 filetype plugin indent on
 
 set exrc
@@ -63,6 +64,8 @@ set cursorline
 set showmatch
 set showmode
 set spell spelllang=en_us
+set $LANG='en'
+set langmenu=en
 set ff=unix
 " Wild menu settings
 set wildmenu
@@ -85,9 +88,19 @@ set updatetime=50
 set shortmess+=c
 
 "set colorcolumn=100
+set t_Co=256
 
+set splitright
 
+setglobal termencoding=utf-8 fileencodings=
+scriptencoding utf-8
+set encoding=utf-8
 
+autocmd BufNewFile,BufRead  *   try
+autocmd BufNewFile,BufRead  *   set encoding=utf-8
+autocmd BufNewFile,BufRead  *   endtry
+
+set fileformat=unix
 
 hi Normal guibg=NONE ctermbg=NONE
 

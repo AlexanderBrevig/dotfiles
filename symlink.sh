@@ -25,4 +25,5 @@ symlink_config .ssh/config
 symlink_config .config/Code/User/settings.json
 symlink_config .config/alacritty/alacritty.yml
 symlink_config .config/starship.toml
+symlink_config .config/amfora/config.toml
 ln -s $DIR/.vimrc ~/.config/nvim/init.vim 
