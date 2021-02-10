@@ -1,6 +1,5 @@
-
-syntax enable
 filetype plugin indent on
+set nocompatible
 
 set exrc
 set guicursor=
@@ -51,16 +50,12 @@ set updatetime=50
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-"set colorcolumn=100
-set t_Co=256
-
 set splitright
 
-setglobal termencoding=utf-8 fileencodings=
 scriptencoding utf-8
 set encoding=utf-8
 set fileformat=unix
-hi Normal guibg=NONE ctermbg=NONE
+setglobal termencoding=utf-8 fileencodings=
 
 autocmd BufNewFile,BufRead  *   try
 autocmd BufNewFile,BufRead  *   set encoding=utf-8
@@ -69,4 +64,7 @@ autocmd BufNewFile,BufRead  *   endtry
 let loaded_matchparen = 1
 let mapleader = " "
 
-set termguicolors
+" set termguicolors
+" set colorcolumn=100
+" set t_Co=256
+hi Normal guibg=NONE ctermbg=NONE
