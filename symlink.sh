@@ -13,7 +13,11 @@ symlink_config .Xresources
 symlink_config .Xmodmap
 symlink_config .config/compton.conf
 symlink_config .i3/config
-symlink_config .vimrc
+symlink_config .vim/vimrc
+symlink_config .vim/plugins.vim
+symlink_config .vim/set.vim
+symlink_config .vim/bindings.vim
+symlink_config .vim/vimrc
 symlink_config .profile
 symlink_config .bash_profile
 symlink_config .bashrc
@@ -26,4 +30,3 @@ symlink_config .config/Code/User/settings.json
 symlink_config .config/alacritty/alacritty.yml
 symlink_config .config/starship.toml
 symlink_config .config/amfora/config.toml
-ln -s $DIR/.vimrc ~/.config/nvim/init.vim 
