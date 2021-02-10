@@ -189,7 +189,8 @@ nnoremap <leader>b :Buffers<CR>
 
 " LSP
 let g:lsp_settings = {
-            \'yaml-language-server': {'disabled': v:true}
+            \'yaml-language-server': {'disabled': v:true},
+            \'gemini-ls': {'cmd': ['/home/alexander/.local/share/vim-lsp-settings/servers/gemini-ls/gemini-ls', '--stdio']}
             \}
 
 function! s:on_lsp_buffer_enabled() abort
