@@ -2,7 +2,6 @@
 
 starship init fish | source
 source ~/.config/fish/functions/fish_theme.fish
-set fish_greeting
 
 set -gx EDITOR vim
 

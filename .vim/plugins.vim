@@ -15,6 +15,8 @@ Plug 'itchyny/lightline.vim'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+
+" FZF
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -25,6 +27,8 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-buffer.vim'
 Plug 'prabirshrestha/asyncomplete-file.vim'
+
+Plug 'mhinz/vim-signify'
 
 Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
@@ -84,6 +88,8 @@ let g:lsp_settings = {
             \'yaml-language-server': {'disabled': v:true},
             \'gemini-ls': {'cmd': ['/home/alexander/.local/share/vim-lsp-settings/servers/gemini-ls/gemini-ls', '--stdio']}
             \}
+      
+
 
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
@@ -132,3 +138,15 @@ augroup lsp_install
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
+" Integrate LSP and a pretty sign columt
+let g_lsp_diagnostics_signs_error = {'text': '█'}
+let g:lsp_diagnostics_signs_warning = {'text': '▓'}
+let g:lsp_diagnostics_signs_information = {'text' : '▒'}
+let g:lsp_diagnostics_signs_hint = {'text': '░'}
+" Signify
+let g:signify_priority = 5
+let g:signify_sign_add               = '▌'
+let g:signify_sign_delete            = '▌'
+let g:signify_sign_delete_first_line = '▌'
+let g:signify_sign_change            = '▌'
+let g:signify_sign_change_delete     = g:signify_sign_change . g:signify_sign_delete_first_line
