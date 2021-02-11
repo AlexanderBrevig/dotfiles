@@ -8,3 +8,6 @@ format = "[☢ $workspace]($style) "
 disabled = true
 format = "[$symbol$account]($style) "
 style = "bold yellow"
+
+[kubernetes]
+disabled = false
