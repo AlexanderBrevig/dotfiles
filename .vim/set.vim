@@ -63,10 +63,15 @@ scriptencoding utf-8
 set encoding=utf-8
 set fileformat=unix
 setglobal termencoding=utf-8 fileencodings=
+set isprint=
 
-autocmd BufNewFile,BufRead  *   try
-autocmd BufNewFile,BufRead  *   set encoding=utf-8
-autocmd BufNewFile,BufRead  *   endtry
+autocmd BufNewFile,BufRead * try
+autocmd BufNewFile,BufRead * set encoding=utf-8
+autocmd BufNewFile,BufRead * endtry
+
+if has("autocmd")
+    autocmd FileType make set noexpandtab
+endif
 
 let loaded_matchparen = 1
 let mapleader = " "

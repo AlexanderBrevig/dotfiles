@@ -137,14 +137,11 @@ augroup lsp_install
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
-
-" Integrate LSP and a pretty sign columt
 let g_lsp_diagnostics_signs_error = {'text': '█'}
 let g:lsp_diagnostics_signs_warning = {'text': '▓'}
 let g:lsp_diagnostics_signs_information = {'text' : '▒'}
 let g:lsp_diagnostics_signs_hint = {'text': '░'}
 " Signify
-let g:signify_priority = 5
 let g:signify_sign_add               = '▌'
 let g:signify_sign_delete            = '▌'
 let g:signify_sign_delete_first_line = '▌'
