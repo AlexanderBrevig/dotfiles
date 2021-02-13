@@ -19,3 +19,9 @@ function autoenv --on-variable PWD
     end
 end
 
+function autotmux --on-variable PWD
+    set tmuxfile $PWD/*.tmux
+    if count $tmuxfile >/dev/null
+        /$PWD/*.tmux
+    end
+end
