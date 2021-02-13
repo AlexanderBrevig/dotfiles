@@ -17,6 +17,7 @@ set smarttab
 set smartindent
 set smartcase
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set list
 
 set exrc
 set showmatch
