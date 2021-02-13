@@ -30,3 +30,4 @@ symlink_config .config/Code/User/settings.json
 symlink_config .config/alacritty/alacritty.yml
 symlink_config .config/starship.toml
 symlink_config .config/amfora/config.toml
+symlink_config .tmux.conf
