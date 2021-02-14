@@ -28,6 +28,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec alacritty
+bindsym $mod+shift+Return exec --no-startup-id alacritty -t 'alacritty-floating'& sleep 0.2&& i3-msg move position center
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -224,6 +225,7 @@ for_window [class="Xfburn"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
+for_window [title="^alacritty-floating$"] floating enable
 
 # reload the configuration file
 # bindsym $mod+Shift+c reload
