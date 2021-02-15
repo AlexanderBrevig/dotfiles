@@ -1,5 +1,5 @@
 function fish_greeting
-    set hour (date +"%S")
+    set hour (date +"%H")
 
     if test $hour -ge 7
         and test $hour -lt 18
