@@ -30,6 +30,10 @@ Plug 'prabirshrestha/asyncomplete-file.vim'
 
 Plug 'mhinz/vim-signify'
 
+Plug 'vimwiki/vimwiki'
+Plug 'tbabej/taskwiki'
+" Plug 'plasticboy/vim-markdown'
+
 Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'ap/vim-css-color'
@@ -67,6 +71,12 @@ let g:fzf_branch_actions = {
       \ },
       \}
 
+let g:vimwiki_list = [{'path':'~/vimwiki','path_html':'~/vimwiki_html/','diary_rel_path':'log', 'syntax':'markdown', 'ext':'.md'}]
+let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown'}
+let g:vimwiki_markdown_link_ext = 1
+
+let g:taskwiki_markup_syntax = 'markdown'
+let g:markdown_folding = 1
 
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
