@@ -8,7 +8,6 @@ userresources=$HOME/.Xresources
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 usermodmap=$HOME/.Xmodmap
-
 DEFAULT_SESSION='i3 --shmlog-size 0'
 
 
@@ -35,7 +34,8 @@ fi
 
 
 # merge in defaults and keymaps
-setxkbmap -model pc105 -layout no,us -variant ,alt-intl -option grp:ctrls_toggle -option caps:ctrl_modifier -option compose:ralt
+setxkbmap -option
+setxkbmap -model pc105 -layout no -variant winkeys
 
 if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
