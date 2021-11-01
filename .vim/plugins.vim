@@ -34,6 +34,8 @@ Plug 'vimwiki/vimwiki'
 Plug 'tbabej/taskwiki'
 " Plug 'plasticboy/vim-markdown'
 
+Plug 'dense-analysis/ale'
+
 Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'ap/vim-css-color'
@@ -41,7 +43,7 @@ Plug 'ap/vim-css-color'
 call plug#end()
 
 if executable('rg')
-    let g:rg_derive_root='true'
+    let g:rg_derive_root=1
 endif
 
 
@@ -71,7 +73,7 @@ let g:fzf_branch_actions = {
       \ },
       \}
 
-let g:vimwiki_list = [{'path':'~/vimwiki','path_html':'~/vimwiki_html/','diary_rel_path':'log', 'syntax':'markdown', 'ext':'.md'}]
+let g:vimwiki_list = [{'path':'/home/alexander/vimwiki','path_html':'~/vimwiki_html/','diary_rel_path':'log', 'syntax':'markdown', 'ext':'.md'}]
 let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown'}
 let g:vimwiki_markdown_link_ext = 1
 
@@ -173,3 +175,10 @@ let g:signify_sign_delete            = '▌'
 let g:signify_sign_delete_first_line = '▌'
 let g:signify_sign_change            = '▌'
 let g:signify_sign_change_delete     = g:signify_sign_change . g:signify_sign_delete_first_line
+
+let g:ale_fixers = {
+            \ 'javascript': ['prettier'],
+            \ 'typescript': ['prettier'],
+            \ 'css': ['prettier'],
+            \}
+let g:ale_fix_on_save = 1

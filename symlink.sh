@@ -17,7 +17,8 @@ symlink_config .vim/vimrc
 symlink_config .vim/plugins.vim
 symlink_config .vim/set.vim
 symlink_config .vim/bindings.vim
-symlink_config .vim/vimrc
+symlink_config .vim/run.vim
+symlink_config .vim/after
 symlink_config .profile
 symlink_config .bash_profile
 symlink_config .bashrc
