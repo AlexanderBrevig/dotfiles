@@ -53,7 +53,7 @@ colorscheme gruvbox
 let g:lightline = {'colorscheme':'gruvbox'}
 
 if executable('rg')
-    set grepprg=rg\ --vimigrep\ --smart-case\ --hidden\ --follow
+    set grepprg=rg\ --column\ --line-number\ --color=always\ --vimigrep\ --smart-case\ --hidden\ --follow
     let g:rg_derive_root='true'
 endif
 
