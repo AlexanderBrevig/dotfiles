@@ -28,7 +28,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec alacritty
-bindsym $mod+shift+Return exec --no-startup-id alacritty -t 'alacritty-floating'& sleep 0.2&& i3-msg move position center&&xdotool sleep 0.2 key t a s k space a d d space>/dev/null
+bindsym $mod+shift+Return exec --no-startup-id alacritty -t 'alacritty-floating'& sleep 0.2&& i3-msg move position center&&xdotool sleep 0.5 key t a s k space a d d space>/dev/null
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -333,7 +333,7 @@ bar {
 
     bindsym button4 nop
     bindsym button5 nop
-    strip_workspace_numbers yes
+    #strip_workspace_numbers yes
 
     #output primary
     font pango:Inconsolata 10

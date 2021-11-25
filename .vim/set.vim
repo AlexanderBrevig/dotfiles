@@ -3,7 +3,10 @@ let mapleader = " "
 set nocompatible
 set backspace=indent,eol,start
 
-set path+=**
+let $RTP=split(&runtimepath, ',')[0]
+let $RC="$HOME/.vim/vimrc"
+
+set path=.,**
 
 set relativenumber
 set nu
@@ -11,11 +14,7 @@ set nu
 set autoread
 set hidden
 
-set tabstop=4 softtabstop=4
-set shiftwidth=4
-set expandtab
-set smarttab
-set smartindent
+set shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab smartindent autoindent
 set smartcase
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set list
@@ -71,6 +70,4 @@ set isprint=
 syntax on
 set background=dark
 
-" set colorcolumn=100
-set t_Co=256
 hi Normal guibg=NONE ctermbg=NONE

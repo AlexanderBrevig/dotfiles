@@ -31,6 +31,8 @@ Plug 'prabirshrestha/asyncomplete-file.vim'
 Plug 'mhinz/vim-signify'
 
 
+Plug 'dense-analysis/ale'
+
 Plug 'gruvbox-community/gruvbox'
 Plug 'ap/vim-css-color'
 call plug#end()
@@ -110,3 +112,10 @@ let g:signify_sign_delete            = '▌'
 let g:signify_sign_delete_first_line = '▌'
 let g:signify_sign_change            = '▌'
 let g:signify_sign_change_delete     = g:signify_sign_change . g:signify_sign_delete_first_line
+
+let g:ale_fixers = {
+            \ 'javascript': ['prettier'],
+            \ 'typescript': ['prettier'],
+            \ 'css': ['prettier'],
+            \}
+let g:ale_fix_on_save = 1
