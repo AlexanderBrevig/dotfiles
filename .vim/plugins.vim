@@ -30,11 +30,16 @@ Plug 'prabirshrestha/asyncomplete-file.vim'
 
 Plug 'mhinz/vim-signify'
 
+Plug 'editorconfig/editorconfig-vim'
 
 Plug 'dense-analysis/ale'
 
 Plug 'gruvbox-community/gruvbox'
+
+" Language specific
+Plug 'jparise/vim-graphql'
 Plug 'ap/vim-css-color'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 fun! EmptyRegisters()
@@ -80,6 +85,46 @@ let g:lsp_settings = {
             \'efm-langserver': {'disabled': v:false}
             \}
 
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+    imap <c-space> <Plug>(asyncomplete_force_refresh)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+
+    call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name': 'buffer',
+    \ 'allowlist': ['*'],
+    \ 'blocklist': ['go'],
+    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+    \ }))
+
+    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+    \ 'name': 'file',
+    \ 'allowlist': ['*'],
+    \ 'priority': 10,
+    \ 'completor': function('asyncomplete#sources#file#completor')
+    \ }))
+
+    nnoremap <leader>ld :LspDocumentDiagnostic<CR>
+    nnoremap <leader>lf :LspDocumentFormat<CR>
+    nnoremap <leader>ca :LspCodeAction<CR>
+endfunction
 
 augroup lsp_install
     au!
@@ -119,3 +164,5 @@ let g:ale_fixers = {
             \ 'css': ['prettier'],
             \}
 let g:ale_fix_on_save = 1
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"

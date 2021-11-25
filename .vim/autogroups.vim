@@ -2,7 +2,8 @@
 augroup ALEXANDER_BREVIG
     autocmd!
 
-    autocmd BufWritePre * :call TrimWhitespace()
+    let whitespaceBlacklist = ['go']
+    autocmd BufWritePre * if index(whitespaceBlacklist, &ft) < 0 | :call TrimWhitespace()
 
     autocmd BufNewFile,BufRead * try
     autocmd BufNewFile,BufRead * set encoding=utf-8
