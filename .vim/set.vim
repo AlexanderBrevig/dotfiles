@@ -1,4 +1,5 @@
 filetype plugin indent on
+let mapleader = " "
 set nocompatible
 set backspace=indent,eol,start
 
@@ -40,7 +41,7 @@ set ff=unix
 set complete-=i
 set completeopt=menuone,noinsert,noselect
 set wildmenu
-set wildmode=longest,list
+set wildmode=longest:full,full
 set wildignorecase
 set wildignore+=*.git
 set wildignore+=*.png,*.jpeg,*.jpg,*.pdf,*.dds,*.blend,*.gif
@@ -60,29 +61,16 @@ set updatetime=50
 set shortmess+=c
 
 set splitright
+set splitbelow
 scriptencoding utf-8
 set encoding=utf-8
 set fileformat=unix
 setglobal termencoding=utf-8 fileencodings=
 set isprint=
 
-autocmd BufNewFile,BufRead * try
-autocmd BufNewFile,BufRead * set encoding=utf-8
-autocmd BufNewFile,BufRead * endtry
+syntax on
+set background=dark
 
-if has("autocmd")
-    autocmd FileType make set noexpandtab
-endif
-
-let loaded_matchparen = 1
-let mapleader = " "
-
-" set termguicolors
 " set colorcolumn=100
-" set t_Co=256
-if exists('+termguicolors')
-    let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
-endif
+set t_Co=256
 hi Normal guibg=NONE ctermbg=NONE

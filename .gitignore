@@ -1,3 +1,7 @@
+.vim/.netrwhist
+.vim/plugged/*
+.vim/view/*
+.vim/autoload/*
 br.fish
 agenda.fish
 .taskrc
