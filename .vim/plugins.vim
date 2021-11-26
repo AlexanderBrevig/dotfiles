@@ -35,6 +35,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'dense-analysis/ale'
 
 Plug 'gruvbox-community/gruvbox'
+Plug 'wojciechkepka/vim-github-dark'
 
 " Language specific
 Plug 'jparise/vim-graphql'
@@ -56,8 +57,8 @@ fun! TrimWhitespace()
 endfun
 
 set background=dark
-colorscheme gruvbox
-let g:lightline = {'colorscheme':'gruvbox'}
+colorscheme ghdark
+let g:lightline = {'colorscheme':'ghdark'}
 
 if executable('rg')
     set grepprg=rg\ --column\ --line-number\ --color=always\ --vimigrep\ --smart-case\ --hidden\ --follow

@@ -13,7 +13,7 @@ nnoremap <leader>gs :G<CR>
 nnoremap <leader>grum :Git rebase upstream/master<CR>
 nnoremap <leader>grom :Git rebase origin/master<CR>
 
-" Difj
+" Diff
 nnoremap <leader>du :diffget //2<CR>
 nnoremap <leader>dh :diffget //3<CR>
 

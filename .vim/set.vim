@@ -69,5 +69,6 @@ set isprint=
 
 syntax on
 set background=dark
+set termguicolors
 
 hi Normal guibg=NONE ctermbg=NONE
