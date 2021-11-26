@@ -2,6 +2,7 @@
 .vim/plugged/*
 .vim/view/*
 .vim/autoload/*
+.vim/spell/*
 br.fish
 agenda.fish
 .taskrc
