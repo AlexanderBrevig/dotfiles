@@ -1,5 +1,4 @@
 filetype plugin indent on
-let mapleader = " "
 set nocompatible
 set backspace=indent,eol,start
 
