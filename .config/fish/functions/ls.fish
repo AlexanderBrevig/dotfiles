@@ -1,3 +1,3 @@
 function ls
-exa -l $argv;
+exa --sort=type --icons $argv;
 end
