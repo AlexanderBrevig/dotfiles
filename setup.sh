@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -p "SYstem Update? y/N: " -n 1 -r
+read -p "System Update? y/N: " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then

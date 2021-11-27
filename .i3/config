@@ -27,8 +27,8 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
-bindsym $mod+shift+Return exec --no-startup-id alacritty -t 'alacritty-floating'& sleep 0.2&& i3-msg move position center&&xdotool sleep 0.5 key t a s k space a d d space>/dev/null
+bindsym $mod+Return exec kitty
+bindsym $mod+shift+Return exec --no-startup-id kitty -T 'kitty-floating'& sleep 0.2&& i3-msg move position center
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -44,11 +44,10 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ################################################################################################
 
 exec --no-startup-id volumeicon
-#bindsym $mod+Ctrl+m exec alacritty -e 'alsamixer'
+#bindsym $mod+Ctrl+m exec kitty 'alsamixer'
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
-exec --no-startup-id twgcals
 
 ################################################################################################
 
@@ -57,7 +56,7 @@ exec --no-startup-id twgcals
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
-bindsym $mod+Ctrl+b exec alacritty -e 'bmenu'
+bindsym $mod+Ctrl+b exec kitty 'bmenu'
 bindsym $mod+F1 exec code
 bindsym $mod+F2 exec joplin-desktop
 bindsym $mod+F3 exec pcmanfm
@@ -76,7 +75,7 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+Ctrl+s exec slack
 bindsym $mod+Ctrl+t exec teams-for-linux
 bindsym $mod+Ctrl+Shift+m exec spotify
-bindsym $mod+F9 exec alacritty -e vim ~/dotfiles
+bindsym $mod+F9 exec kitty vim ~/dotfiles
 
 # focus_follows_mouse no
 
@@ -226,10 +225,10 @@ for_window [class="Xfburn"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
-for_window [title="^alacritty-floating$"] floating enable
+for_window [title="^kitty-floating$"] floating enable
 
 # reload the configuration file
-# bindsym $mod+Shift+c reload
+bindsym $mod+Shift+i reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -292,8 +291,7 @@ exec --no-startup-id clipit
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec setxkbmap -model pc104 -layout no,us -option grp:alt_shift_toggle -option grp:ctrls_toggle -option caps:ctrl_modifier -option compose:ralt
-exec --no-startup-id alacritty
-exec_always --no-startup-id nextcloud --background
+exec --no-startup-id kitty
 
 # Color palette used for the terminal ( ~/.Xresources file )
 set_from_resource $term_background background
