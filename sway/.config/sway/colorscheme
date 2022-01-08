@@ -1,0 +1,42 @@
+# some global theme specific variables
+set $gtk-theme Gruvbox-dark
+set $icon-theme Gruvbox-dark
+set $cursor-theme xcursor-breeze
+set $gui-font JetBrains Mono 14
+set $term-font JetBrains Mono 12
+set $kvantum-theme Matchama-Dark
+
+set $color0  #181818
+set $color1  #282828
+set $color2  #383838
+set $color3  #585858
+set $color4  #b8b8b8
+set $color5  #d8d8d8
+set $color6  #e8e8e8
+set $color7  #f8f8f8
+set $color8  #ab4642
+set $color9  #dc9656
+set $color10 #f7ca88
+set $color11 #a1b56c
+set $color12 #86c1b9
+set $color13 #7cafc2
+set $color14 #ba8baf
+set $color15 #a16946
+
+#$color0
+set $background-color $color0
+#$color6
+set $text-color $color6
+#color1
+set $selection-color $color1
+#color12
+set $accent-color $color12
+
+# Basic color configuration using the Base16 variables for windows and borders.
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          $color5 $color12 $color0 $color12 $color12
+client.focused_inactive $color1 $color1 $color5 $color3 $color1
+client.unfocused        $color1 $color0 $color5 $color1 $color1
+client.urgent           $color8 $color8 $color0 $color8 $color8
+client.placeholder      $color0 $color0 $color5 $color0 $color0
+client.background       $color7
