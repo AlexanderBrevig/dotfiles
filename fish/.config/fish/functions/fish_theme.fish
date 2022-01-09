@@ -1,141 +1,132 @@
-#!/usr/bin/fish
-function theme_gruvbox --description 'Apply gruvbox theme'
-  set -l mode 'light'
-  if test  (count $argv) -gt 0
-    set mode $argv[1]
+# base16-fish (https://github.com/tomyun/base16-fish)
+# based on base16-shell (https://github.com/chriskempson/base16-shell)
+# Gruvbox dark, medium scheme by Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+
+function base16-gruvbox-dark-medium -d "Gruvbox dark, medium"
+  set color00 28/28/28 # Base 00 - Black
+  set color01 fb/49/34 # Base 08 - Red
+  set color02 b8/bb/26 # Base 0B - Green
+  set color03 fa/bd/2f # Base 0A - Yellow
+  set color04 83/a5/98 # Base 0D - Blue
+  set color05 d3/86/9b # Base 0E - Magenta
+  set color06 8e/c0/7c # Base 0C - Cyan
+  set color07 d5/c4/a1 # Base 05 - White
+  set color08 66/5c/54 # Base 03 - Bright Black
+  set color09 $color01 # Base 08 - Bright Red
+  set color10 $color02 # Base 0B - Bright Green
+  set color11 $color03 # Base 0A - Bright Yellow
+  set color12 $color04 # Base 0D - Bright Blue
+  set color13 $color05 # Base 0E - Bright Magenta
+  set color14 $color06 # Base 0C - Bright Cyan
+  set color15 fb/f1/c7 # Base 07 - Bright White
+  set color16 fe/80/19 # Base 09
+  set color17 d6/5d/0e # Base 0F
+  set color18 3c/38/36 # Base 01
+  set color19 50/49/45 # Base 02
+  set color20 bd/ae/93 # Base 04
+  set color21 eb/db/b2 # Base 06
+  set colorfg $color07 # Base 05 - White
+  set colorbg $color00 # Base 00 - Black
+
+  if test -n "$TMUX"
+    # Tell tmux to pass the escape sequences through
+    # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
+    function put_template; printf '\033Ptmux;\033\033]4;%d;rgb:%s\033\033\\\033\\' $argv; end;
+    function put_template_var; printf '\033Ptmux;\033\033]%d;rgb:%s\033\033\\\033\\' $argv; end;
+    function put_template_custom; printf '\033Ptmux;\033\033]%s%s\033\033\\\033\\' $argv; end;
+  else if string match 'screen*' $TERM # [ "${TERM%%[-.]*}" = "screen" ]
+    # GNU screen (screen, screen-256color, screen-256color-bce)
+    function put_template; printf '\033P\033]4;%d;rgb:%s\007\033\\' $argv; end;
+    function put_template_var; printf '\033P\033]%d;rgb:%s\007\033\\' $argv; end;
+    function put_template_custom; printf '\033P\033]%s%s\007\033\\' $argv; end;
+  else if string match 'linux*' $TERM # [ "${TERM%%-*}" = "linux" ]
+    function put_template; test $argv[1] -lt 16 && printf "\e]P%x%s" $argv[1] (echo $argv[2] | sed 's/\///g'); end;
+    function put_template_var; true; end;
+    function put_template_custom; true; end;
+  else
+    function put_template; printf '\033]4;%d;rgb:%s\033\\' $argv; end;
+    function put_template_var; printf '\033]%d;rgb:%s\033\\' $argv; end;
+    function put_template_custom; printf '\033]%s%s\033\\' $argv; end;
   end
 
-  set -g contrast 'medium'
-  if test  (count $argv) -gt 1
-    set contrast $argv[2]
+  # 16 color space
+  put_template 0  $color00
+  put_template 1  $color01
+  put_template 2  $color02
+  put_template 3  $color03
+  put_template 4  $color04
+  put_template 5  $color05
+  put_template 6  $color06
+  put_template 7  $color07
+  put_template 8  $color08
+  put_template 9  $color09
+  put_template 10 $color10
+  put_template 11 $color11
+  put_template 12 $color12
+  put_template 13 $color13
+  put_template 14 $color14
+  put_template 15 $color15
+
+  # 256 color space
+  put_template 16 $color16
+  put_template 17 $color17
+  put_template 18 $color18
+  put_template 19 $color19
+  put_template 20 $color20
+  put_template 21 $color21
+
+  # foreground / background / cursor color
+  if test -n "$ITERM_SESSION_ID"
+    # iTerm2 proprietary escape codes
+    put_template_custom Pg d5c4a1 # foreground
+    put_template_custom Ph 282828 # background
+    put_template_custom Pi d5c4a1 # bold color
+    put_template_custom Pj 504945 # selection color
+    put_template_custom Pk d5c4a1 # selected text color
+    put_template_custom Pl d5c4a1 # cursor
+    put_template_custom Pm 282828 # cursor text
+  else
+    put_template_var 10 $colorfg
+    if [ "$BASE16_SHELL_SET_BACKGROUND" != false ]
+      put_template_var 11 $colorbg
+      if string match 'rxvt*' $TERM # [ "${TERM%%-*}" = "rxvt" ]
+        put_template_var 708 $colorbg # internal border (rxvt)
+      end
+    end
+    put_template_custom 12 ";7" # cursor (reverse video)
   end
 
-  switch $contrast
-  case 'soft'
-  case 'medium'
-  case 'hard'
-  case '*'
-      set_color $fish_color_error
-      echo 'Unknown contrast $contrast, choose soft, medium or hard'
-      set_color $fish_color_normal
-      return 1
-  end
+  # set syntax highlighting colors
+  set -U fish_color_autosuggestion 504945
+  set -U fish_color_cancel -r
+  set -U fish_color_command green #white
+  set -U fish_color_comment 504945
+  set -U fish_color_cwd green
+  set -U fish_color_cwd_root red
+  set -U fish_color_end brblack #blue
+  set -U fish_color_error red
+  set -U fish_color_escape yellow #green
+  set -U fish_color_history_current --bold
+  set -U fish_color_host normal
+  set -U fish_color_match --background=brblue
+  set -U fish_color_normal normal
+  set -U fish_color_operator blue #green
+  set -U fish_color_param bdae93
+  set -U fish_color_quote yellow #brblack
+  set -U fish_color_redirection cyan
+  set -U fish_color_search_match bryellow --background=504945
+  set -U fish_color_selection white --bold --background=504945
+  set -U fish_color_status red
+  set -U fish_color_user brgreen
+  set -U fish_color_valid_path --underline
+  set -U fish_pager_color_completion normal
+  set -U fish_pager_color_description yellow --dim
+  set -U fish_pager_color_prefix white --bold #--underline
+  set -U fish_pager_color_progress brwhite --background=cyan
 
-  switch $mode
-    case 'light'
-      __theme_gruvbox_base
-      __theme_gruvbox_light
-    case 'dark'
-      __theme_gruvbox_base
-      __theme_gruvbox_dark
-    case '*'
-      set_color $fish_color_error
-      echo 'Unknown mode $mode, choose light or dark'
-      set_color $fish_color_normal
-      return 1
-  end
-  __theme_gruvbox_palette
-  return 0
-end
+  # remember current theme
+  set -U base16_theme gruvbox-dark-medium
 
-function __theme_gruvbox_base
-  __printf_color 1 'cc/24/1d'
-  __printf_color 2 '98/97/1a'
-  __printf_color 3 'd7/99/21'
-  __printf_color 4 '45/85/88'
-  __printf_color 5 'b1/62/86'
-  __printf_color 6 '68/9d/6a'
-end
-
-function __theme_gruvbox_light
-  set -l bg 'fb/f1/c7'
-  switch $contrast
-    case "soft"
-      set bg 'f2/e5/bc'
-    case "hard"
-      set bg 'f9/f5/d7'
-  end
-  command printf "\033]11;rgb:$bg\007"
-
-  set -l fg '3c/38/36'
-  command printf "\033]10;rgb:$fg\007"
-
-  __printf_color 0 $bg
-  __printf_color 7 '7c/6f/64'
-  __printf_color 8 '92/83/74'
-  __printf_color 9 '9d/00/06'
-  __printf_color 10 '79/74/0e'
-  __printf_color 11 'b5/76/14'
-  __printf_color 12 '07/66/78'
-  __printf_color 13 '8f/3f/71'
-  __printf_color 14 '42/7b/58'
-  __printf_color 15 $fg
-end
-
-function __theme_gruvbox_dark
-  set -l bg '28/28/28'
-  switch $contrast
-    case "soft"
-      set bg '32/30/2f'
-    case "hard"
-      set bg '1d/20/21'
-  end
-  command printf "\033]11;rgb:$bg\007"
-
-  set -l fg 'eb/db/b2'
-  command printf "\033]10;rgb:$fg\007"
-
-  __printf_color 0 $bg
-  __printf_color 7 'a8/99/84'
-  __printf_color 8 '92/83/74'
-  __printf_color 9 'fb/59/34'
-  __printf_color 10 'b8/bb/26'
-  __printf_color 11 'fa/bd/2f'
-  __printf_color 12 '83/a5/98'
-  __printf_color 13 'd3/86/9b'
-  __printf_color 14 '8e/c0/7c'
-  __printf_color 15 $fg
-end
-
-function __theme_gruvbox_palette
-  __printf_color 236 '32/30/2f'
-  __printf_color 234 '1d/20/21'
-
-  __printf_color 235 '28/28/28'
-  __printf_color 237 '3c/38/36'
-  __printf_color 239 '50/49/45'
-  __printf_color 241 '66/5c/54'
-  __printf_color 243 '7c/6f/64'
-
-  __printf_color 244 '92/83/74'
-  __printf_color 245 '92/83/74'
-
-  __printf_color 228 'f2/e5/bc'
-  __printf_color 230 'f9/f5/d7'
-
-  __printf_color 229 'fb/f1/c7'
-  __printf_color 223 'eb/db/b2'
-  __printf_color 250 'd5/c4/a1'
-  __printf_color 248 'bd/ae/93'
-  __printf_color 246 'a8/99/84'
-
-  __printf_color 167 'fb/49/34'
-  __printf_color 142 'b8/bb/26'
-  __printf_color 214 'fa/bd/2f'
-  __printf_color 109 '83/a5/98'
-  __printf_color 175 'd3/86/9b'
-  __printf_color 108 '8e/c0/7c'
-  __printf_color 208 'fe/80/19'
-
-  __printf_color 88 '9d/00/06'
-  __printf_color 100 '79/74/0e'
-  __printf_color 136 'b5/76/14'
-  __printf_color 24 '07/66/78'
-  __printf_color 96 '8f/3f/71'
-  __printf_color 66 '42/7b/58'
-  __printf_color 130 'af/3a/03'
-end
-
-function __printf_color
-  command printf "\033]4;$argv[1];rgb:$argv[2]\007"
+  # clean up
+  functions -e put_template put_template_var put_template_custom
 end

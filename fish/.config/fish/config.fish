@@ -4,8 +4,7 @@ starship init fish | source
 source ~/.config/fish/functions/fish_theme.fish
 
 set -gx EDITOR nvim
-
-theme_gruvbox 'dark'
+base16-gruvbox-dark-medium
 
 function autopython --on-variable PWD
     if test -d $PWD/.venv
