@@ -8,3 +8,4 @@ agenda.fish
 .taskrc
 fish_variables
 .zcompdump
+packer_compiled.lua
