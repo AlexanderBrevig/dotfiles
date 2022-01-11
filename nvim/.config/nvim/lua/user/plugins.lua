@@ -56,9 +56,11 @@ return packer.startup(function(use)
   use "goolord/alpha-nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "folke/which-key.nvim"
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- Colorschemes
   use "morhetz/gruvbox"
+
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
