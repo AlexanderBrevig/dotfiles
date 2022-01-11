@@ -1,14 +1,10 @@
-# Lines configured by zsh-newuser-install
 unsetopt beep
 bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
 zstyle :compinstall filename '/home/dev/.zshrc'
 
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
-eval "$(starship init zsh)"
+
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH="$HOME/github.com/neovim/build/bin:$PATH"
@@ -25,6 +21,12 @@ export HISTFILE=~/.zsh_history
 
 alias kc=kubectl
 alias kx=kubectx
-alias ls=exa
-alias cat=batcat
-. ~/.z.sh
+alias kn=kubens
+alias bat=batcat
+alias ls="exa --sort=type"
+alias la="exa -la --sort=type --icons"
+alias ip="ip -c=always"
+alias grep=rg
+alias fd=fdfind
+. ~/.config/zsh/.z.sh
+eval "$(starship init zsh)"
