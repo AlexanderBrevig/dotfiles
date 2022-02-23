@@ -83,3 +83,10 @@ disabled = false
 [username]
 style_user = "bold dimmed blue"
 show_always = false
+
+[gcloud]
+disabled = true
+
+[kubernetes]
+formt = 'on [⛵ $context \($namespace\)](dimmed green) '
+disabled = false

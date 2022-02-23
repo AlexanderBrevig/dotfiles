@@ -29,4 +29,5 @@ alias ip="ip -c=always"
 alias grep=rg
 alias fd=fdfind
 . ~/.config/zsh/.z.sh
+source <(kubectl completion zsh)
 eval "$(starship init zsh)"
