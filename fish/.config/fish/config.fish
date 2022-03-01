@@ -3,6 +3,8 @@
 starship init fish | source
 source ~/.config/fish/functions/fish_theme.fish
 
+fish_add_path ~/go/bin
+
 set -gx EDITOR nvim
 base16-gruvbox-dark-medium
 
