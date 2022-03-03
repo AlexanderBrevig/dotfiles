@@ -14,6 +14,8 @@
   name = Alexander Brevig
 [color]
   ui = auto
+[status]
+  submoduleSummary = true
 [pack]
   threads = 0
 [pull]
