@@ -4,6 +4,7 @@ starship init fish | source
 source ~/.config/fish/functions/fish_theme.fish
 
 fish_add_path ~/go/bin
+fish_add_path ~/bin
 
 set -gx EDITOR nvim
 base16-gruvbox-dark-medium
@@ -19,3 +20,6 @@ function autoenv --on-variable PWD
         source $PWD/.env
     end
 end
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/alexander/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/home/alexander/Downloads/google-cloud-sdk/path.fish.inc'; end
