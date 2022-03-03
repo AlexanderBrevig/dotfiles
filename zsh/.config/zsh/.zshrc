@@ -6,6 +6,7 @@ autoload -Uz compinit
 compinit
 
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/home/dev/.cargo/bin
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH="$HOME/github.com/neovim/build/bin:$PATH"
 
