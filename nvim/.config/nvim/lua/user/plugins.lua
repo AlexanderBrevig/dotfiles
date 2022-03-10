@@ -62,11 +62,21 @@ return packer.startup(function(use)
   -- Colorschemes
   use "morhetz/gruvbox"
 
+  -- CMP
+  use {
+      'hrsh7th/nvim-cmp',
+      requires = {
+          { 'hrsh7th/cmp-buffer', after = 'nvim-cmp', },
+          { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp', },
+      },
+  }
+
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
