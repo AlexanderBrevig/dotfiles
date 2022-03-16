@@ -20,3 +20,4 @@ stow fish -t ~
 stow starship -t ~
 stow nvim -t ~
 stow git -t ~
+stow doom -t ~

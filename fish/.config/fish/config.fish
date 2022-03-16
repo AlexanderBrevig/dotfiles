@@ -5,6 +5,7 @@ source ~/.config/fish/functions/fish_theme.fish
 
 fish_add_path ~/go/bin
 fish_add_path ~/bin
+fish_add_path ~/.emacs.d/bin
 
 set -gx EDITOR nvim
 base16-gruvbox-dark-medium
