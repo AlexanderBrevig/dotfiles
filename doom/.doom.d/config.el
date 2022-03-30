@@ -16,14 +16,7 @@
 (setq org-directory "~/github.com/org")
 (setq org-roam-directory "~/github.com/org-roam")
 
-(setq confirm-kill-emacs 'nil)
+(setq confirm-kill-emacs nil)
 
 ;; LSP and check
 (flycheck-mode 1)
-
-;; Markdown style
-(custom-set-faces
- '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :family "FiraCode Nerd Font"))))
- '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.8))))
- '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.4))))
- '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.2)))))
