@@ -3,6 +3,7 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
+(setq vc-follow-symlinks t)
 ;; My actual config
 (org-babel-load-file (expand-file-name "~/.emacs.d/config.org"))
 
@@ -12,7 +13,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(lsp-ui yasnippet-snippets yasnippet flycheck go-mode company-lsp company lsp-mode evil-org doom-themes doom-modeline evil which-key use-package)))
+   '(general lsp-ui yasnippet-snippets yasnippet flycheck go-mode company-lsp company lsp-mode evil-org doom-themes doom-modeline evil which-key use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -1,11 +1,11 @@
 * Emacs
 ** Fix UI
 #+BEGIN_SRC emacs-lisp
-    (when window-system
-      (global-hl-line-mode t)
-      (global-prettify-symbols-mode t))
-    (global-display-line-numbers-mode 1)
-    (setq display-line-numbers 'relative)
+  (when window-system
+    (global-hl-line-mode t)
+    (global-prettify-symbols-mode t))
+  (global-display-line-numbers-mode 1)
+  (setq display-line-numbers 'relative)
 #+END_SRC
 ** Fix UX
 #+begin_src emacs-lisp
@@ -31,6 +31,12 @@
     (package-refresh-contents)
     (package-install 'use-package))
 #+end_src
+** General.el
+#+begin_src emacs-lisp
+  (use-package general
+    :ensure t)
+
+#+end_src
 ** EVIL
 *** evil
 #+begin_src emacs-lisp
@@ -48,10 +54,22 @@
     (require 'evil-org-agenda)
     (evil-org-agenda-set-keys))
 #+end_src
+** Evil keymaps
 *** leader
 #+begin_src emacs-lisp
+  (general-def :states '(normal motion emacs) "SPC" nil)
+
+  (general-create-definer my-leader
+    :prefix "SPC")
   (evil-set-leader nil (kbd "SPC"))
   (evil-set-leader 'normal (kbd "SPC"))
+#+end_src
+*** mode jumps
+#+begin_src emacs-lisp
+  (my-leader 'normal 'override
+    "o" '(:ignore t :which-key "org")
+    "oa" 'org-agenda
+    "oc" 'org-capture)
 #+end_src
 *** escape
 #+begin_src emacs-lisp
@@ -60,7 +78,6 @@
 #+end_src
 *** lspkeys
 #+begin_src emacs-lisp
-  (evil-define-key 'normal lsp-mode-map (kbd "<leader>l") lsp-command-map)
 #+end_src
 ** Looks
 #+begin_src emacs-lisp
@@ -91,7 +108,15 @@
     (interactive (list my-term-shell)))
   (ad-activate 'ansi-term)
 
-  (global-set-key (kbd "<C-return>") 'ansi-term)
+  (my-leader 'normal 'override
+    "t" 'ansi-term)
+
+  (defun set-no-process-query-on-exit ()
+    (let ((proc (get-buffer-process (current-buffer))))
+      (when (processp proc)
+	(set-process-query-on-exit-flag proc nil))))
+
+  (add-hook 'term-exec-hook 'set-no-process-query-on-exit)
 #+end_src
 *** IDO
 #+begin_src emacs-lisp
