@@ -2,6 +2,7 @@
 
 starship init fish | source
 source ~/.config/fish/functions/fish_theme.fish
+source ~/.asdf/asdf.fish
 
 fish_add_path ~/go/bin
 fish_add_path ~/bin
