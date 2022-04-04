@@ -31,4 +31,5 @@ alias grep=rg
 alias fd=fdfind
 . ~/.config/zsh/.z.sh
 source <(kubectl completion zsh)
+source $HOME/.asdf/asdf.sh
 eval "$(starship init zsh)"
