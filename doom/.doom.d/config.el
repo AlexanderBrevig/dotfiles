@@ -20,3 +20,4 @@
 
 ;; LSP and check
 (flycheck-mode 1)
+(format-all-mode 1)
