@@ -25,7 +25,7 @@
   - [[#org-roam][Org Roam]]
     - [[#v2-ftw][v2 FTW]]
     - [[#capture-templates][Capture Templates]]
-      - [[#todo-consider-customizing-cap-templ-for-org-roam][TODO: Consider customizing cap-templ for org-roam]]
+      - [[#consider-customizing-cap-templ-for-org-roam][Consider customizing cap-templ for org-roam]]
 
 * Basic Doom Config
 ** Lexical Binding
@@ -88,10 +88,11 @@ I use fish and it caused me troubles. I default to bash for Emacs.
 * Org
 ** Directory Config
 #+begin_src emacs-lisp
-(setq org-directory "~/github.com/org")
-(setq org-agenda-files '("~/github.com/org"))
-(setq org-agenda-text-search-extra-files '(agenda-archives "~/github.com/dotfiles/doom/.doom.d/config.org"))
-(setq org-roam-directory "~/github.com/org-roam")
+(setq org-directory "~/github.com/org/")
+(after! org
+  (setq org-agenda-files (list "~/github.com/dotfiles/doom/.doom.d/config.org"
+                               "~/github.com/org/")))
+(setq org-roam-directory "~/github.com/org-roam/")
 #+end_src
 ** Org Roam
 *** v2 FTW
@@ -111,4 +112,4 @@ I use fish and it caused me troubles. I default to bash for Emacs.
 
 *** Capture Templates
 
-**** TODO: Consider customizing cap-templ for org-roam
+**** TODO Consider customizing cap-templ for org-roam
