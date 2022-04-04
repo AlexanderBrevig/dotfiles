@@ -57,6 +57,8 @@ output DP-1 mode 3440x1440@100Hz pos 1920 0
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
+    bindsym Print exec grim - | wl-copy
+
     bindsym $mod+Control+l exec swaylock -f -c 000000
 
     # Exit sway (logs you out of your Wayland session)
