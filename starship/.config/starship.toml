@@ -88,5 +88,7 @@ show_always = false
 disabled = true
 
 [kubernetes]
-formt = 'on [⛵ $context \($namespace\)](dimmed green) '
+format = '[$symbol$context\($namespace\)](dimmed green) '
 disabled = false
+[kubernetes.context_aliases]
+"gke_.*_(?P<var_cluster>[\\w-]+)" = "gke-$var_cluster"
