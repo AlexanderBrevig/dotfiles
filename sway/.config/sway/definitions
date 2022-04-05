@@ -16,7 +16,7 @@ set $bindsym bindsym --to-code
 set $unbindsym unbindsym --to-code
 
 # background
-set $wallpaper /usr/share/backgrounds/gruvbox.png
+set $wallpaper /usr/share/backgrounds/gruvbox_pixel.png
 
 # Your preferred terminal emulator
 set $term kitty
