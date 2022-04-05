@@ -8,7 +8,6 @@
 - [[#basic-doom-config][Basic Doom Config]]
   - [[#lexical-binding][Lexical Binding]]
   - [[#personal-information][Personal Information]]
-  - [[#load-envvars][Load envvars]]
 - [[#ui-settings][UI Settings]]
   - [[#fonts][Fonts]]
   - [[#default-theme][Default Theme]]
@@ -37,11 +36,6 @@
 #+begin_src emacs-lisp
 (setq user-full-name "Alexander Brevig"
       user-mail-address "alexanderbrevig@gmail.com")
-#+end_src
-** Load envvars
-I use fish and it caused me troubles. I default to bash for Emacs.
-#+begin_src emacs-lisp
-(doom-load-envvars-file "~/.doom.d/myenv")
 #+end_src
 * UI Settings
 ** Fonts
