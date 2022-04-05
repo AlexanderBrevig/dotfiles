@@ -23,6 +23,7 @@ export HISTFILE=~/.zsh_history
 alias kc=kubectl
 alias kx=kubectx
 alias kn=kubens
+alias ku="kubectl config unset current-context"
 alias bat=batcat
 alias ls="exa --sort=type"
 alias la="exa -la --sort=type --icons"
