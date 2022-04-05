@@ -26,6 +26,7 @@
     - [[#v2-ftw][v2 FTW]]
     - [[#capture-templates][Capture Templates]]
       - [[#consider-customizing-cap-templ-for-org-roam][Consider customizing cap-templ for org-roam]]
+  - [[#autosync-with-git][Autosync with git]]
 
 * Basic Doom Config
 ** Lexical Binding
@@ -113,3 +114,27 @@ I use fish and it caused me troubles. I default to bash for Emacs.
 *** Capture Templates
 
 **** TODO Consider customizing cap-templ for org-roam
+** Autosync with git
+#+begin_src emacs-lisp
+(defun org-git-sync (repo)
+  (interactive)
+  (if (s-contains? (format "github.com/%s" repo) (buffer-file-name))
+      (progn
+        (magit-with-toplevel (magit-stage-1 nil (list buffer-file-name)))
+        (magit-with-toplevel (magit-run-git
+                              "commit" "-m"
+                              (format "%s <%s>"
+                                      (file-name-nondirectory (buffer-file-name))
+                                      (format-time-string "%Y-%m-%dT%T"))))
+        (magit-with-toplevel (magit-run-git "push")))))
+
+(defun org-git-sync-org ()
+  (interactive)
+  (org-git-sync "org"))
+
+(defun org-git-sync-org-roam ()
+  (interactive)
+  (org-git-sync "org-roam"))
+
+(add-hook 'after-save-hook 'org-git-sync-org)
+#+end_src
