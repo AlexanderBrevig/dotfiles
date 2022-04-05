@@ -24,6 +24,7 @@ alias kc=kubectl
 alias kx=kubectx
 alias kn=kubens
 alias ku="kubectl config unset current-context"
+alias netshoot="kubectl run -n metrics -i --rm --tty netshoot --image=nicolaka/netshoot  -- /bin/bash"
 alias bat=batcat
 alias ls="exa --sort=type"
 alias la="exa -la --sort=type --icons"
