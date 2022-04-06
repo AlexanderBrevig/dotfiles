@@ -29,7 +29,6 @@ alias bat=batcat
 alias ls="exa --sort=type"
 alias la="exa -la --sort=type --icons"
 alias ip="ip -c=always"
-alias grep=rg
 alias fd=fdfind
 . ~/.config/zsh/.z.sh
 source <(kubectl completion zsh)
