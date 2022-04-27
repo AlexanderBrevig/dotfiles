@@ -92,7 +92,7 @@
        markdown          ; writing docs for people to ignore
        ;;ocaml             ; an objective camel
        (org +pretty +journal +roam2 +present)
-       ;;plantuml          ; diagrams for confusing people more
+       plantuml          ; diagrams for confusing people more
        (python +lsp)            ; beautiful is better than ugly
        ;;racket            ; a DSL for DSLs
        rest              ; Emacs as a REST client

@@ -18,6 +18,7 @@
   - [[#splits-that-works][Splits That Works]]
     - [[#split-direction][Split Direction]]
     - [[#prompt-buffer-on-splits][Prompt Buffer On Splits]]
+  - [[#responsive][Responsive]]
 - [[#lsp][LSP]]
 - [[#org][Org]]
   - [[#directory-config][Directory Config]]
@@ -74,6 +75,10 @@
 (defadvice! prompt-for-buffer (&rest _)
   :after '(evil-window-split evil-window-vsplit)
   (consult-buffer))
+#+end_src
+** Responsive
+#+begin_src emacs-lisp
+(setq which-key-idle-delay 0)
 #+end_src
 * LSP
 #+begin_src emacs-lisp
