@@ -1,10 +1,24 @@
+// =============================================================================
+//
+// Waybar configuration
+//
+// Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+//
+// =============================================================================
+
 {
+    // -------------------------------------------------------------------------
+    // Global configuration
+    // -------------------------------------------------------------------------
+
     "layer": "top",
+
+    // If height property would be not present, it'd be calculated dynamically
     "height": 30,
     "position": "top",
 
     "modules-left": ["custom/menu", "sway/workspaces", "custom/scratchpad"],
-    "modules-center": ["custom/wf-recorder", "sway/mode"],
+    "modules-center": ["custom/wf-recorder", "sway/mode", "custom/weather"],
     "modules-right": [
         // informational
         "sway/language",
@@ -17,7 +31,7 @@
 
         // connecting
         "network",
-        "bluetooth",
+        //"bluetooth",
 
         // media
         "custom/playerctl",
