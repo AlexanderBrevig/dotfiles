@@ -8,6 +8,7 @@ compinit
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/home/dev/.cargo/bin
 export PATH=$PATH:$(go env GOPATH)/bin
+export PATH=$PATH:/home/dev/.local/bin
 export PATH="$HOME/github.com/neovim/build/bin:$PATH"
 
 # Generated for envman. Do not edit.
@@ -25,6 +26,9 @@ alias kx=kubectx
 alias kn=kubens
 alias ku="kubectl config unset current-context"
 alias netshoot="kubectl run -n metrics -i --rm --tty netshoot --image=nicolaka/netshoot  -- /bin/bash"
+alias em="emacs -nw"
+alias emd="emacs --daemon"
+alias emc=emacsclient
 alias bat=batcat
 alias ls="exa --sort=type"
 alias la="exa -la --sort=type --icons"
@@ -34,3 +38,7 @@ alias fd=fdfind
 source <(kubectl completion zsh)
 source $HOME/.asdf/asdf.sh
 eval "$(starship init zsh)"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
