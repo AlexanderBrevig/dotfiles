@@ -1,4 +1,4 @@
-# ~/.config/starship.toml
+# ~/-config/starship.toml
 
 [battery]
 full_symbol = "🔋"
@@ -88,7 +88,5 @@ show_always = false
 disabled = true
 
 [kubernetes]
-format = '[$symbol$context\($namespace\)](dimmed green) '
+format = '[$symbol$context\($namespace\)](green) '
 disabled = false
-[kubernetes.context_aliases]
-"gke_.*_(?P<var_cluster>[\\w-]+)" = "gke-$var_cluster"
