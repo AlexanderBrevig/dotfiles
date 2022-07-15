@@ -23,3 +23,4 @@ stow nvim -t ~
 stow git -t ~
 stow doom -t ~
 stow peco -t ~
+stow helix -t ~
