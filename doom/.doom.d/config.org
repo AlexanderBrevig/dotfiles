@@ -19,7 +19,9 @@
     - [[#split-direction][Split Direction]]
     - [[#prompt-buffer-on-splits][Prompt Buffer On Splits]]
   - [[#responsive][Responsive]]
+  - [[#projectile][Projectile]]
 - [[#lsp][LSP]]
+  - [[#common-lisp-slime][Common Lisp slime]]
 - [[#org][Org]]
   - [[#directory-config][Directory Config]]
   - [[#org-roam][Org Roam]]
@@ -79,11 +81,19 @@
 ** Responsive
 #+begin_src emacs-lisp
 (setq which-key-idle-delay 0)
+** Projectile
+#+begin_src emacs-lisp
+(setq projectile-project-search-path '("~/entur/bb" "~/entur/gh" "~/entur/mat" "~/github.com" "~/gitlab.com"))
 #+end_src
 * LSP
 #+begin_src emacs-lisp
 (flycheck-mode 1)
 (format-all-mode 1)
+#+end_src
+** Common Lisp slime
+#+begin_src emacs-lisp
+(load (expand-file-name "~/.quicklisp/slime-helper.el"))
+(setq inferior-lisp-program "sbcl")
 #+end_src
 * Org
 ** Directory Config
