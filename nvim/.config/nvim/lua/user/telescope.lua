@@ -87,6 +87,12 @@ telescope.setup {
     -- builtin picker
     find_files = {
       hidden = true
+    },
+    grep_string = {
+      hidden = true
+    },
+    live_grep = {
+      hidden = true
     }
   },
   extensions = {
