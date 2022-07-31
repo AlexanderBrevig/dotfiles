@@ -2,13 +2,12 @@ unsetopt beep
 bindkey -e
 zstyle :compinstall filename '/home/dev/.zshrc'
 
-autoload -Uz compinit
-compinit
+autoload -Uz compinit; compinit; _comp_options+=(globdots;)
 
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/home/dev/.cargo/bin
+export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:$(go env GOPATH)/bin
-export PATH=$PATH:/home/dev/.local/bin
+export PATH=$PATH:~/.local/bin
 export PATH="$HOME/github.com/neovim/build/bin:$PATH"
 
 # Generated for envman. Do not edit.
@@ -30,15 +29,18 @@ alias em="emacs -nw"
 alias emd="emacs --daemon"
 alias emc=emacsclient
 alias bat=batcat
-alias ls="exa --sort=type"
+alias ls="exa --sort=type --icons"
 alias la="exa -la --sort=type --icons"
+alias tree="exa --tree"
 alias ip="ip -c=always"
 alias fd=fdfind
-. ~/.config/zsh/.z.sh
+
+. ~/.z.sh
 source <(kubectl completion zsh)
 source $HOME/.asdf/asdf.sh
-eval "$(starship init zsh)"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Prompt
+eval "$(starship init zsh)"
