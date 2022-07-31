@@ -5,6 +5,16 @@ line-number = "relative"
 scrolloff = 5
 idle-timeout = 0
 auto-pairs = false
+color-modes = true
+cursorline = true
+
+[editor.lsp]
+display-messages = true
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position", "position-percentage", "file-encoding", "file-line-ending", "file-type"]
 
 [editor.cursor-shape]
 insert = "bar"
@@ -13,6 +23,9 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+[editor.indent-guides]
+render = true
 
 [editor.whitespace.characters]
 tab = "→"
