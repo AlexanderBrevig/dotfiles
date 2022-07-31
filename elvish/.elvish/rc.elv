@@ -1,3 +1,6 @@
+use github.com/zzamboni/elvish-completions/cd
+use github.com/zzamboni/elvish-completions/builtins
+use github.com/zzamboni/elvish-completions/git
 use github.com/zzamboni/elvish-modules/alias
 
 set paths = [
