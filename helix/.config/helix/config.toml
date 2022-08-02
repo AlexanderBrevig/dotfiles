@@ -25,7 +25,8 @@ select = "underline"
 hidden = false
 
 [editor.indent-guides]
-render = true
+render = false
 
 [editor.whitespace.characters]
 tab = "→"
+
