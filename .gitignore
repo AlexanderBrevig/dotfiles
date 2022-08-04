@@ -10,3 +10,4 @@ agenda.fish
 fish_variables
 .zcompdump
 packer_compiled.lua
+kitty/.config/kitty/current-theme.conf
