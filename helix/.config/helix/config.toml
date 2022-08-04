@@ -1,4 +1,4 @@
-theme = "gruvbox"
+theme = "catppuccin_macchiato"
 
 [editor]
 line-number = "relative"
@@ -14,7 +14,8 @@ display-messages = true
 [editor.statusline]
 left = ["mode", "spinner"]
 center = ["file-name"]
-right = ["diagnostics", "selections", "position", "position-percentage", "file-encoding", "file-line-ending", "file-type"]
+right = ["diagnostics", "separator",  "selections", "separator",  "position", "position-percentage", "spacer", "separator", "file-encoding", "file-line-ending", "file-type"]
+separator = "⊙"
 
 [editor.cursor-shape]
 insert = "bar"
@@ -26,6 +27,11 @@ hidden = false
 
 [editor.indent-guides]
 render = false
+
+[editor.whitespace.render]
+space = "none"
+tab = "all"
+newline = "none"
 
 [editor.whitespace.characters]
 tab = "→"
