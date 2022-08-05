@@ -29,3 +29,6 @@ fn fork_up {|@_args| {
 
 eval (carapace _carapace|slurp)
 eval (starship init elvish)
+
+clear
+script --flush --quiet --return /tmp/tw-output.txt --command "task next"
