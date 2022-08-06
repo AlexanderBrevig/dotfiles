@@ -57,3 +57,4 @@
   autocrlf = false
   safecrlf = true
   editor = hx
+	excludesFile = ~/.config/git/.gitignore
