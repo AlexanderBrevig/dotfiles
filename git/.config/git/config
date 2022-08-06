@@ -56,3 +56,4 @@
 [core]
   autocrlf = false
   safecrlf = true
+  editor = hx
