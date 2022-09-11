@@ -18,7 +18,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export HISTFILE=~/.zsh_history
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
 
 alias kc=kubectl
 alias kx=kubectx
@@ -41,6 +44,34 @@ source $HOME/.asdf/asdf.sh
 
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Peco
+# History
+# https://github.com/krfl/dotfiles/blob/master/zsh/zshrc
+function peco-history() {
+  history -n | peco | read foo
+  if [ -n "$foo" ]
+  then
+    zle kill-whole-line
+    zle -U "$foo"
+    zle -R
+  fi
+}
+zle -N peco-history
+bindkey '^R' peco-history
+
+# Recent directories
+function peco-dirs() {
+  z | tac | awk '{print $2}' | peco | read foo
+  foo="${foo##* }"
+  if [ -n "$foo" ]
+  then
+    cd "$foo"
+    zle -R
+  fi
+}
+zle -N peco-dirs
+bindkey '^L' peco-dirs
 
 # Prompt
 eval "$(starship init zsh)"
