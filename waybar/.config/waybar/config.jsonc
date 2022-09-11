@@ -269,7 +269,7 @@
         "tooltip": true,
         "interval": 3600,
         // accepts a location as an argument (in quotes)
-        "exec": "/usr/share/sway/scripts/weather.py",
+        "exec": "/usr/share/sway/scripts/weather.py 'oslo'",
         "return-type": "json",
         "format-icons": {
             "Unknown": "",
