@@ -1,4 +1,4 @@
-theme = "gruvbox"
+theme = "fleetish"
 
 [editor]
 line-number = "relative"
@@ -7,6 +7,7 @@ idle-timeout = 0
 auto-pairs = false
 color-modes = true
 cursorline = true
+true-color = true
 
 [editor.lsp]
 display-messages = true
@@ -25,16 +26,19 @@ select = "underline"
 [editor.file-picker]
 hidden = false
 
-[editor.indent-guides]
-render = false
-
 [editor.whitespace.render]
-space = "none"
+space = "all"
 tab = "all"
 newline = "none"
 
 [editor.whitespace.characters]
+render = true
+space = "·"
+nbsp = "⍽"
 tab = "→"
+newline = "⏎"
+tabpad = "·" # Tabs will look like "→···" (depending on tab width)
 
-[keys.normal]
-esc = ["flip_selections", "collapse_selection", "keep_primary_selection"]
+[editor.indent-guides]
+render = true
+character = "╎"

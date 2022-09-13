@@ -49,7 +49,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # History
 # https://github.com/krfl/dotfiles/blob/master/zsh/zshrc
 function peco-history() {
-  history -n | peco | read foo
+  fc -ln 1 | peco | read foo
   if [ -n "$foo" ]
   then
     zle kill-whole-line
