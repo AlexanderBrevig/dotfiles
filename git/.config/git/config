@@ -1,60 +1,56 @@
-[includeIf "gitdir:~/entur/bb/"]
-  path = ~/entur/bb/.gitconfig
-[includeIf "gitdir:~/entur/gh/"]
-  path = ~/entur/gh/.gitconfig
-
-[merge]
-  tool = vimdiff
-[mergetool]
-  keepBackup = false
-[mergetool "vim"]
-  cmd = vim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
-[user]
-  email = alexanderbrevig@gmail.com
-  name = Alexander Brevig
-[color]
-  ui = auto
-[status]
-  submoduleSummary = true
-[pack]
-  threads = 0
-[pull]
-  rebase = true
 [alias]
-  l = log --oneline --decorate --graph
+	b = "branch"
+	ci = "commit"
+	co = "checkout"
+	d = "diff"
+	pu = "push"
+	s = "status"
 
-  ll = log --graph --abbrev-commit --decorate \
-  --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ai)%C(reset) \
-  %C(white)%s%C(reset) %C(dim red)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+[commit]
+	gpgSign = true
 
-  lll = log --graph --abbrev-commit --decorate \
-  --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) \
-  %C(white)%s%C(reset) %C(dim red)- %an%C(reset)%C(bold yellow)%d%C(reset)' \
-  --branches
-
-  ac = commit -am
-  co = checkout
-  ci = commit
-  man = help
-  h = help
-  a = add
-  f = fetch
-  d = diff
-  dc = diff --cached
-  dt = difftool
-  dtc = difftool --cached
-  ds = diff --stat
-  dsc = diff --stat --cached
-  s = status --branch
-  b = branch
-
-[credential]
-  helper = cache
-
-[diff]
-  tool = vimdiff
 [core]
-  autocrlf = false
-  safecrlf = true
-  editor = hx
-	excludesFile = ~/.config/git/.gitignore
+	editor = "hx"
+	whitespace = "trailing-space"
+	excludesfile = /home/alexander/.gitignore
+
+[gpg]
+	program = gpg
+
+[init]
+	defaultBranch = "main"
+
+[pull]
+	rebase = "false"
+
+[tag]
+	gpgSign = true
+
+[url "git@bitbucket.org:enturas/"]
+	insteadOf = "enturas:/"
+
+[url "git@github.com:"]
+	insteadOf = "ssh+gh:"
+
+[url "git@github.com:AlexanderBrevig/"]
+	insteadOf = "gh:/"
+
+[url "git@github.com:entur/"]
+	insteadOf = "entur:/"
+
+[url "https://bitbucket.org/"]
+	insteadOf = "bb: "
+
+[url "https://gist.github.com/"]
+	insteadOf = "gist: "
+
+[url "https://github.com/"]
+	insteadOf = "gh:"
+
+[url "https://gitlab.com/"]
+	insteadOf = "gl:"
+
+[user]
+	email = "alexanderbrevig@gmail.com"
+	name = "Alexander Brevig"
+	signingkey = 2F8810DC076B7B0E

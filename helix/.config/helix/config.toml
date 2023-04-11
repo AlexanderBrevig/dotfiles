@@ -1,4 +1,4 @@
-theme = "fleetish"
+theme = "fleet_dark"
 
 [editor]
 line-number = "relative"
@@ -8,37 +8,20 @@ auto-pairs = false
 color-modes = true
 cursorline = true
 true-color = true
-
-[editor.lsp]
-display-messages = true
+rulers = []
 
 [editor.statusline]
 left = ["mode", "spinner"]
 center = ["file-name"]
-right = ["diagnostics", "separator",  "selections", "separator",  "position", "position-percentage", "spacer", "separator", "file-encoding", "file-line-ending", "file-type"]
-separator = "⊙"
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
 
-[editor.cursor-shape]
-insert = "bar"
-normal = "block"
-select = "underline"
+[editor.lsp]
+display-messages = true
+# display-inlay-hints = true
 
 [editor.file-picker]
 hidden = false
 
-[editor.whitespace.render]
-space = "all"
-tab = "all"
-newline = "none"
+[keys.normal.space]
+o = [":format", ":write"]
 
-[editor.whitespace.characters]
-render = true
-space = "·"
-nbsp = "⍽"
-tab = "→"
-newline = "⏎"
-tabpad = "·" # Tabs will look like "→···" (depending on tab width)
-
-[editor.indent-guides]
-render = true
-character = "╎"

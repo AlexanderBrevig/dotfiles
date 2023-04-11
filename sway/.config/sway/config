@@ -1,18 +1,36 @@
-include ~/.config/sway/colorscheme 
-include ~/.config/sway/definitions
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
 
-default_border pixel 2
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term kitty
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu exec wofi --show drun
+bindsym Print exec grim -g "$(slurp -d)" - | wl-copy
+
+font pango:JetBrainsMono Nerd Font Mono 10
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg $wallpaper fill
+#output eDP-1 resolution 1920x1080 position 0,0
+output * bg ~/Pictures/Wallpapers/wallpaper.jpg fill
 #
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
-
-output eDP-1 pos 0 0
-output DP-1 mode 3440x1440@100Hz pos 1920 0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -22,7 +40,7 @@ output DP-1 mode 3440x1440@100Hz pos 1920 0
 #
 # exec swayidle -w \
 #          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 #          before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -30,6 +48,20 @@ output DP-1 mode 3440x1440@100Hz pos 1920 0
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
+input "type:keyboard" {
+    xkb_layout us,no
+    xkb_variant ,nodeadkeys
+    xkb_options grp:alt_shift_toggle,caps:escape
+}
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
@@ -57,12 +89,11 @@ output DP-1 mode 3440x1440@100Hz pos 1920 0
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
-    bindsym Print exec grim - | wl-copy
-
-    bindsym $mod+Control+l exec swaylock -f -c 000000
-
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+    # Lock screen
+    bindsym $mod+Shift+Delete exec swaylock
 #
 # Moving around:
 #
@@ -176,4 +207,24 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-include ~/.config/sway/config.d/*
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+	font pango:Inconsolata 10
+	position top
+	tray_output none
+	status_command bumblebee-status -m nic disk:root cpu \
+		memory pasink pasource battery date time \
+		-p root.path=/ \
+        -p time.format="%H:%M CW %V" date.format="%Y-%m-%d" \
+        -p memory.usedonly=True disk.format="{percent:05.02f}%" \
+        -p nic.states="^down" \
+		-t default
+}
+
+include /etc/sway/config.d/*
+
+exec mako
+exec udiskie -s -n
