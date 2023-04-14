@@ -3,7 +3,11 @@ base
 base-devel
 coreutils
 cmake
+ninja
+mold
 git
+gnupg
+rustup
 arm-none-eabi-gcc
 arm-none-eabi-newlib
 clang
@@ -20,6 +24,8 @@ pacman-contrib
 bat
 exa
 ripgrep
+tar
+gzip
 stow
 tealdeer
 zoxide
@@ -37,7 +43,6 @@ peco
 picom
 procs
 ranger
-rustup
 thunar
 unzip
 wget
@@ -71,8 +76,25 @@ ttf-roboto
 ttf-ubuntu-font-family
 terminus-font
 
+# libs for kicad
+wxwidgets-gtk3
+python
+boost-libs
+glew
+curl
+glm
+ngspice
+opencascade
+python-wxpython
+unixodbc
+zlib
+mesa
+boost
+swig
+
 # LSP
 rust-analyzer
+shellcheck
 bash-language-server
 yaml-language-server
 typescript-language-server
