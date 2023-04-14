@@ -1,0 +1,81 @@
+# Absolute necessities 
+base
+base-devel
+coreutils
+cmake
+git
+arm-none-eabi-gcc
+arm-none-eabi-newlib
+clang
+
+# terminal
+kitty
+fish
+starship
+
+# terminal tools
+# helix
+teehee
+pacman-contrib
+bat
+exa
+ripgrep
+stow
+tealdeer
+zoxide
+bind
+jq
+yq
+bottom
+fzf
+htop
+inxi
+lshw
+neofetch
+lolcat
+peco
+picom
+procs
+ranger
+rustup
+thunar
+unzip
+wget
+xclip
+slides
+helm
+kubectx
+postgresql
+
+# apps
+polybar
+google-chrome
+bitwarden
+bitwarden-cli
+kicad
+kicad-library
+kicad-library-3d
+discord
+spotify
+slack-desktop
+docker
+flameshot
+
+# fonts
+gnu-free-fonts
+noto-fonts
+noto-fonts-emoji
+ttf-droid
+ttf-liberation
+ttf-roboto
+ttf-ubuntu-font-family
+terminus-font
+
+# LSP
+rust-analyzer
+bash-language-server
+yaml-language-server
+typescript-language-server
+taplo-cli
+python-lsp-server
+texlab
