@@ -17,12 +17,5 @@ stow fish -t ~
 stow starship -t ~
 stow helix -t ~
 
-stow mako -t ~
-stow wofi -t ~
-stow mime -t ~
-
-stow sway -t ~
-stow swaylock -t ~
-
 stow peco -t ~
 stow helix -t ~

@@ -4,3 +4,6 @@ disabled = true
 [kubernetes]
 format = '[$symbol$context\($namespace\)](green) '
 disabled = false
+[kubernetes.context_aliases]
+'dev.local.cluster.k8s' = 'local'
+'gke_.*_(?P<var_cluster>[\w-]+)' = '$var_cluster'

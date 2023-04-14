@@ -1,10 +1,13 @@
-set -Ux SHELL fish
-set -Ux EDITOR hx
+set -Ux SHELL fish 
+set -Ux EDITOR hx 
 set -Ux USE_GKE_GCLOUD_AUTH_PLUGIN True
+set -Ux KUBE_CONFIG_PATH ~/.kube/config
+set -Ux KUBECONFIG ~/.kube/config
 
 fish_add_path ~/.cargo/bin
 fish_add_path ~/github.com/picotool/build
-fish_add_path ~/entur/bb/mat-helpers/bin
+fish_add_path ~/tools/cloud-sql-proxy/
+fish_add_path ~/.asdf/shims
 
 function fish_greeting
 end
@@ -32,12 +35,11 @@ set fish_cursor_visual      block
 
 source /opt/asdf-vm/asdf.fish
 
-zoxide init fish  | source
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/alexander/tools/google-cloud-sdk/path.fish.inc' ]; . '/home/alexander/tools/google-cloud-sdk/path.fish.inc'; end
 
-navi widget fish | source
+zoxide init fish  | source
 
 starship init fish | source
 
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/alexander/google-cloud-sdk/path.fish.inc' ]; . '/home/alexander/google-cloud-sdk/path.fish.inc'; end
