@@ -60,6 +60,9 @@ bitwarden-cli
 kicad
 kicad-library
 kicad-library-3d
+blender
+inkscape
+gimp
 discord
 spotify
 slack-desktop
@@ -76,7 +79,7 @@ ttf-roboto
 ttf-ubuntu-font-family
 terminus-font
 
-# libs for kicad
+# libs for kicad compile
 wxwidgets-gtk3
 python
 boost-libs

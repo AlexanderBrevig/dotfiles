@@ -7,8 +7,6 @@ stow fish -t ~
 stow kitty -t ~
 stow starship -t ~
 stow helix -t ~
-stow sway -t ~
-stow wofi -t ~
 stow peco -t ~
 
 grep --invert-match "#.*" pacman.lst | grep  . | xargs paru -S --needed --noconfirm

@@ -15,7 +15,6 @@ _ensure git@github.com:raspberrypi/pico-sdk.git ~/github.com/pico-sdk
 _ensure git@github.com:raspberrypi/picotool.git ~/github.com/picotool
 _ensure git@gitlab.com:alexanderbrevig/kicad ~/gitlab.com/kicad
 _ensure git@github.com:SSBMTonberry/pwrb0xx ~/github.com/pwrb0xx
-_ensure git@github.com:AlexanderBrevig/luxonome-fw ~/github.com/luxonome-fw
 _ensure git@github.com:AlexanderBrevig/luxonome-node ~/github.com/luxonome-node
 _ensure git@github.com:AlexanderBrevig/luxonome-hub ~/github.com/luxonome-hub
 _ensure git@github.com:AlexanderBrevig/luxonome.github.io ~/github.com/luxonome.github.io
