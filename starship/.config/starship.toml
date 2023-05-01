@@ -1,3 +1,5 @@
+format = '$all$directory$character'
+
 [gcloud]
 disabled = true
 
