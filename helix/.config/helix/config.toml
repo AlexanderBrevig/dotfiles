@@ -10,10 +10,20 @@ cursorline = true
 true-color = true
 rulers = []
 
+[editor.cursor-shape]
+insert = "bar"
+
 [editor.statusline]
 left = ["mode", "spinner"]
 center = ["file-name"]
-right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+right = [
+  "diagnostics",
+  "selections",
+  "position",
+  "file-encoding",
+  "file-line-ending",
+  "file-type",
+]
 
 [editor.lsp]
 display-messages = true
@@ -22,6 +32,8 @@ display-messages = true
 [editor.file-picker]
 hidden = false
 
-[keys.normal.space]
-o = [":format", ":write"]
+[keys.normal]
+esc = ["collapse_selection", "keep_primary_selection"]
 
+[keys.insert]
+esc = [":format", "normal_mode"]
