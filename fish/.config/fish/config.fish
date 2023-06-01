@@ -4,6 +4,7 @@ set -Ux USE_GKE_GCLOUD_AUTH_PLUGIN True
 set -Ux KUBE_CONFIG_PATH ~/.kube/config
 set -Ux KUBECONFIG ~/.kube/config
 
+fish_add_path ~/bin
 fish_add_path ~/.cargo/bin
 fish_add_path ~/github.com/picotool/build
 fish_add_path ~/tools/cloud-sql-proxy/
@@ -20,12 +21,15 @@ end
 abbr --add --global -- kc 'kubectl'
 abbr --add --global -- kx 'kubectx'
 abbr --add --global -- kn 'kubens'
+abbr --add --global -- zk 'cd ~/notes && zk'
+abbr --add --global -- rec 'find . -type f -print0 | xargs -0'
 
 # Aliases
 alias ku 'kubectl config unset current-context'
 alias la 'exa --sort=type --icons --long --all --links --git'
 alias ls 'exa --sort=type --icons'
 alias netshoot 'kubectl run -n default -i --rm --tty netshoot --image=nicolaka/netshoot  -- /bin/bash'
+alias renovalidate 'npx --package renovate -c renovate-config-validator'
 
 bind \co '__zoxide_zi; commandline -f repaint'
 
