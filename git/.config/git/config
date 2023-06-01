@@ -12,7 +12,8 @@
 [core]
 	editor = "hx"
 	whitespace = "trailing-space"
-	excludesfile = /home/alexander/.gitignore
+	excludesFile = /home/alexander/.gitignore
+	autocrlf = false
 
 [gpg]
 	program = gpg2
