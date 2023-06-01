@@ -1,13 +1,24 @@
 [[language]]
 name = "verilog"
-language-server = { command = "svls" }
+language-servers = ["svls"]
 
 [[language]]
 name = "scheme"
-file-types = [ "lisp", "cl", "el", "mud", "asd" ]
-language-server = { command = "cl-lsp", args = [ "stdio" ] }
+file-types = ["lisp", "cl", "el", "mud", "asd"]
+language-servers = ["cl"]
 
 [[language]]
 name = "markdown"
 roots = [".marksman.toml"]
-language-server = { command = "marksman", args = ["server"] }
+language-servers = ["marksman"]
+
+[language-server.svls]
+command = "svls"
+
+[language-server.cl]
+command = "cl-lsp"
+args = ["stdio"]
+
+[language-server.marksman]
+command = "marksman"
+args = ["server"]
