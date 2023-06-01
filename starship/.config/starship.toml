@@ -1,5 +1,11 @@
 format = '$all$directory$character'
 
+[shell]
+disabled = false
+fish_indicator = "λ"
+bash_indicator = "β"
+nu_indicator = "η"
+
 [gcloud]
 disabled = true
 
