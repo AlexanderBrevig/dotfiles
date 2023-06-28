@@ -1,10 +1,23 @@
 [alias]
-	b = "branch"
-	ci = "commit"
-	co = "checkout"
-	d = "diff"
-	pu = "push"
-	s = "status"
+	a = add
+	ap = add -p
+	b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+	c = commit --verbose
+	ca = commit -a --verbose
+	cm = commit -m
+	cam = commit -a -m
+	co = checkout
+	d = diff
+	ds = diff --stat
+	dc = diff --cached
+	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	m = commit --amend --verbose
+	new = switch -c
+	pu = push
+	pr = push -u upstream
+	s = status -s
+	sw = switch
+	la = "!git config -l | grep alias | cut -c 7-"
 
 [commit]
 	gpgSign = true
@@ -13,7 +26,7 @@
 	editor = "hx"
 	whitespace = "trailing-space"
 	excludesFile = /home/alexander/.gitignore
-	autocrlf = false
+	autocrlf = input
 
 [gpg]
 	program = gpg2
@@ -27,29 +40,26 @@
 [tag]
 	gpgSign = true
 
+[url "git@github.com:"]
+	insteadOf = "gh:"
+
+[url "git@bitbucket.org:"]
+	insteadOf = "bb:"
+
+[url "git@gitlab.com:"]
+	insteadOf = "gl:"
+
 [url "git@bitbucket.org:enturas/"]
 	insteadOf = "enturas:/"
 
-[url "git@github.com:"]
-	insteadOf = "ssh+gh:"
-
 [url "git@github.com:AlexanderBrevig/"]
-	insteadOf = "gh:/"
+	insteadOf = "gha:/"
 
 [url "git@github.com:entur/"]
 	insteadOf = "entur:/"
 
-[url "https://bitbucket.org/"]
-	insteadOf = "bb: "
-
 [url "https://gist.github.com/"]
-	insteadOf = "gist: "
-
-[url "https://github.com/"]
-	insteadOf = "gh:"
-
-[url "https://gitlab.com/"]
-	insteadOf = "gl:"
+	insteadOf = "gist:"
 
 [user]
 	email = "alexanderbrevig@gmail.com"
