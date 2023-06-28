@@ -9,6 +9,7 @@ fish_add_path ~/.cargo/bin
 fish_add_path ~/github.com/picotool/build
 fish_add_path ~/tools/cloud-sql-proxy/
 fish_add_path ~/.asdf/shims
+fish_add_path ~/.local/share/gem/ruby/3.0.0/bin
 
 function fish_greeting
 end
@@ -40,9 +41,9 @@ set fish_cursor_visual      block
 
 source /opt/asdf-vm/asdf.fish
 source '/home/alexander/tools/google-cloud-sdk/path.fish.inc'
+source /home/alexander/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
 zoxide init fish  | source
 
 starship init fish | source
-
 
