@@ -10,8 +10,12 @@ fish_add_path ~/github.com/picotool/build
 fish_add_path ~/tools/cloud-sql-proxy/
 fish_add_path ~/.asdf/shims
 fish_add_path ~/.local/share/gem/ruby/3.0.0/bin
+fish_add_path ~/.npm/bin
+fish_add_path ~/go/bin
 
 function fish_greeting
+    read -P "AGENDA> " agenda
+    test -n "$agenda" && jnl "$agenda"
 end
 
 function page
@@ -22,13 +26,12 @@ end
 abbr --add --global -- kc 'kubectl'
 abbr --add --global -- kx 'kubectx'
 abbr --add --global -- kn 'kubens'
-abbr --add --global -- zk 'cd ~/notes && zk'
 abbr --add --global -- rec 'find . -type f -print0 | xargs -0'
 
 # Aliases
 alias ku 'kubectl config unset current-context'
-alias la 'exa --sort=type --icons --long --all --links --git'
-alias ls 'exa --sort=type --icons'
+alias la 'eza --sort=type --icons --long --all --links --git'
+alias ls 'eza --sort=type --icons'
 alias netshoot 'kubectl run -n default -i --rm --tty netshoot --image=nicolaka/netshoot  -- /bin/bash'
 alias renovalidate 'npx --package renovate -c renovate-config-validator'
 
@@ -43,7 +46,8 @@ source /opt/asdf-vm/asdf.fish
 source '/home/alexander/tools/google-cloud-sdk/path.fish.inc'
 source /home/alexander/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
+cargo shuttle generate -s fish | source
+
 zoxide init fish  | source
 
 starship init fish | source
-
