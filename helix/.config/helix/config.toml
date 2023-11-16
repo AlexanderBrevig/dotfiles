@@ -1,4 +1,6 @@
-theme = "catppuccin_mocha"
+theme = "fleet_dark"
+#theme = "poimandres"
+#theme = "flatwhite"
 
 [editor]
 line-number = "relative"
