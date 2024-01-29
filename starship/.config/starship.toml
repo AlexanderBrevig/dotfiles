@@ -12,6 +12,7 @@ disabled = true
 [kubernetes]
 format = '[$symbol$context\($namespace\)](green) '
 disabled = false
-[kubernetes.context_aliases]
-'dev.local.cluster.k8s' = 'local'
-'gke_.*_(?P<var_cluster>[\w-]+)' = '$var_cluster'
+contexts = [
+  { context_pattern = "dev.local.cluster.k8s", style = "green", symbol = "💔 " },
+  { context_pattern = 'gke_.*_(?P<var_cluster>[\w-]+)', context_alias = "$var_cluster", style = "blue", symbol = "⎈" },
+]
