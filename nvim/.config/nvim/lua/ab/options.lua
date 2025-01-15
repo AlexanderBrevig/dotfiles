@@ -1,4 +1,7 @@
-vim.cmd("let g:netrw_liststyle = 3")
+local g = vim.g
+
+g.netrw_liststyle = 3
+g.have_nerd_font = true
 
 local opt = vim.opt
 
@@ -11,13 +14,21 @@ opt.tabstop = 2
 opt.shiftwidth = 2
 opt.expandtab = true
 opt.autoindent = true
+opt.breakindent = true
 
 opt.wrap = false
 
 opt.ignorecase = true
 opt.smartcase = true
+opt.inccommand = "split"
+opt.hlsearch = true
+
+opt.updatetime = 250
+opt.timeoutlen = 300
 
 opt.cursorline = true
+
+opt.scrolloff = 8
 
 opt.termguicolors = true
 opt.background = "dark"

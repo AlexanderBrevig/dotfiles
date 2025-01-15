@@ -12,7 +12,7 @@ map("n", "gh", "0", "Go to beginning of line")
 
 map("i", "jk", "<ESC>", "Exit insert mode with jk")
 
-map("n", "<leader>nh", ":nohl<CR>", "Find clear highlight")
+map("n", "<Esc>", ":nohl<CR>", "Find clear highlight")
 
 map("n", "<leader>+", "<C-a>", "Increment number")
 map("n", "<leader>-", "<C-x>", "Decrement number")
@@ -22,6 +22,7 @@ map("n", "<leader>sv", "<C-w>v", "Split window vertically")
 map("n", "<leader>sh", "<C-w>s", "Split window horizontally")
 map("n", "<leader>se", "<C-w>=", "Split windows equal size")
 map("n", "<leader>sx", ":close<CR>", "Split windows equal size")
+
 -- Window navigation
 map("n", "<leader>wh", "<C-w>h", "Window select left")
 map("n", "<leader>wj", "<C-w>j", "Window select down")
@@ -36,17 +37,30 @@ map("n", "<leader>tn", ":tabn<CR>", "Tab next")
 map("n", "<leader>tp", ":tabp<CR>", "Tab previous")
 map("n", "<leader>tt", ":tabnew %<CR>", "Tab this buffer")
 
+-- Diagnostics
+map("n", "[d", vim.diagnostic.goto_prev, "Go to previous [D]iagnostic message")
+map("n", "]d", vim.diagnostic.goto_next, "Go to next [D]iagnostic message")
+map("n", "<leader>d", vim.diagnostic.open_float, "Show diagnostic [E]rror messages")
+map("n", "<leader>q", vim.diagnostic.setloclist, "Open diagnostic [Q]uickfix list")
+
 -- Trouble
 -- see ./plugins/trouble.lua
 
 local M = {}
 
 function M.telescope()
-	map("n", "<leader>f", "<cmd>Telescope find_files<cr>", "Fuzzy find files in cwd")
-	map("n", "<leader>b", "<cmd>Telescope buffers<cr>", "Fuzzy find recent files")
-	map("n", "<leader>/", "<cmd>Telescope live_grep<cr>", "Find string in cwd")
-	map("n", "<leader>*", "<cmd>Telescope grep_string<cr>", "Find string under cursor in cwd")
+	local builtin = require("telescope.builtin")
+	map("n", "<leader>f", builtin.find_files, "Fuzzy find files in cwd")
+	map("n", "<leader>b", builtin.buffers, "Fuzzy find recent files")
+	map("n", "<leader>/", builtin.live_grep, "Find string in cwd")
+	map("n", "<leader>*", builtin.grep_string, "Find string under cursor in cwd")
 	map("n", "<leader>ct", "<cmd>TodoTelescope<cr>", "Find todos")
+	map("n", "<leader>oh", builtin.help_tags, "Open help tags")
+	map("n", "<leader>od", builtin.diagnostics, "Open diagnostics")
+	map("n", "<leader><leader>", builtin.resume, "Open previous telescope")
+	map("n", "<leader>on", function()
+		builtin.find_files({ cwd = vim.fn.stdpath("config") })
+	end, "[S]earch [N]eovim files")
 end
 
 function M.lsp(ev)
@@ -88,7 +102,7 @@ function M.lsp(ev)
 	keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
 
 	opts.desc = "Show documentation for what is under cursor"
-	keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+	keymap.set("n", "<leader>k", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 	opts.desc = "Show documentation (short K)"
 	keymap.set("n", "<leader>lk", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
